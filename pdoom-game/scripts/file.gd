@@ -2,14 +2,14 @@ class_name File extends TextureButton
 
 var mouseInArea := false
 @export var currState := Globalz.fileStates.IDLE
+var dragging := false
 @export var fileOverFolder := false
 @export var inFolder := false
 @export var fileContent : FileContent
 
-# src: https://godotforums.org/d/35106-is-there-a-simple-solution-for-a-double-tap/8
-const DOUBLETAP_DELAY = .05
-var doubletap_time = DOUBLETAP_DELAY
-var last_keycode := ""
+const DRAG_THRESHOLD := 4.0
+var grab_offset := Vector2.ZERO
+var press_pos := Vector2.ZERO
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -18,22 +18,20 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	doubletap_time = clamp(doubletap_time-delta, 0, doubletap_time)
 	if currState == Globalz.fileStates.CLICKED:
 		_clicked()
 	if currState == Globalz.fileStates.DROPPED:
 		print("dropped")
 		_drop()
-	#print(doubletap_time)
 
 func _clicked():
-	# dragging if mouse velocity is de/increasing
-	if Input.get_last_mouse_velocity().abs() > Vector2.ZERO:
-		var currentMousePos = get_global_mouse_position()
-		var offsetVector = Vector2((size.x*scale.x)/pivot_offset_ratio.x, 0)
-		var finalFilePos = currentMousePos - offsetVector
-		position = finalFilePos
-	#print(doubletap_time)
+	var mouse_pos = get_global_mouse_position()
+	# only start dragging after the mouse actually moves past a threshold
+	if not dragging and mouse_pos.distance_to(press_pos) > DRAG_THRESHOLD:
+		dragging = true
+	# keep the original grab point under the cursor, so no jump
+	if dragging:
+		global_position = mouse_pos - grab_offset
 
 func _drop():
 	inFolder = true
@@ -41,18 +39,21 @@ func _drop():
 	currState = Globalz.fileStates.IDLE
 	queue_free()
 
+func _open_file():
+	Globalz.populate_file_popup(self)
+
 func _input(event: InputEvent):
 	# mouse clicking on file should activate clicking state (which could lead to drag and drop or nothing at all)
 	# and we also check/wait for double click
 	if event.is_action_pressed("lmb_click") and mouseInArea:
 		currState = Globalz.fileStates.CLICKED
-		doubletap_time = DOUBLETAP_DELAY
-		#print("clicked once")
-		if last_keycode == event.as_text() and doubletap_time >= 0: 
-			#print("DOUBLETAP: ", event.as_text())
-			Globalz.populate_file_popup(self)
-			last_keycode = ""
-		else: last_keycode = event.as_text()
+		press_pos = get_global_mouse_position()
+		grab_offset = press_pos - global_position
+		dragging = false
+
+		if event is InputEventMouseButton and event.double_click:
+			_open_file()
+			currState = Globalz.fileStates.IDLE  # to not start a drag on potential doubletap
 
 	# releasing when file is being hovered over folder should drop the file in that folder
 	if event.is_action_released("lmb_click") and fileOverFolder:
@@ -60,6 +61,7 @@ func _input(event: InputEvent):
 	# releasing elseif, reverts to idle, so nothing
 	elif event.is_action_released("lmb_click"):
 		currState = Globalz.fileStates.IDLE
+		dragging = false
 
 func _on_file_mouse_entered() -> void:
 	mouseInArea = true

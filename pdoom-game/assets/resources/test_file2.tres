@@ -1,0 +1,8 @@
+[gd_resource type="Resource" script_class="FileContent" format=3 uid="uid://b08gbblenyybb"]
+
+[ext_resource type="Script" uid="uid://ddjek2drohv5m" path="res://scripts/file_content.gd" id="1_vowof"]
+
+[resource]
+script = ExtResource("1_vowof")
+content = "BYEEEE"
+metadata/_custom_type_script = "uid://ddjek2drohv5m"

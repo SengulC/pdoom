@@ -4,6 +4,8 @@
 [ext_resource type="PackedScene" uid="uid://buph0h50ickkm" path="res://scenes/file.tscn" id="2_w7c3h"]
 [ext_resource type="Texture2D" uid="uid://55pahtw0s5c8" path="res://assets/images/open-folder.png" id="2_w8frs"]
 [ext_resource type="Script" uid="uid://ck4d565uyrfwx" path="res://scripts/folder.gd" id="3_mx8sn"]
+[ext_resource type="Resource" uid="uid://bpb5tktt406iy" path="res://assets/resources/test_file.tres" id="5_2r41h"]
+[ext_resource type="Resource" uid="uid://b08gbblenyybb" path="res://assets/resources/test_file2.tres" id="6_klq6b"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_w2pfo"]
 size = Vector2(526, 505.00006)
@@ -78,43 +80,48 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0, 0, 0, 1)
 
-[node name="Label" type="Label" parent="DesktopUIControl/FilePopup" unique_id=1801508849]
+[node name="Container" type="MarginContainer" parent="DesktopUIControl/FilePopup" unique_id=1585860785]
 layout_mode = 1
-offset_right = 76.0
-offset_bottom = 23.0
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 50
+theme_override_constants/margin_top = 50
+theme_override_constants/margin_right = 50
+theme_override_constants/margin_bottom = 50
+
+[node name="Label" type="Label" parent="DesktopUIControl/FilePopup/Container" unique_id=1801508849]
+layout_mode = 2
 text = "Asdfghjkl;
 saskjsaklsj
 sjsajlasj"
+
+[node name="Button" type="Button" parent="DesktopUIControl/FilePopup" unique_id=175405501]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -8.0
+offset_bottom = 8.0
+grow_horizontal = 0
+text = "CLOSE"
 
 [node name="File" parent="." unique_id=963720069 instance=ExtResource("2_w7c3h")]
 offset_left = 152.0
 offset_top = 260.0
 offset_right = 664.0
 offset_bottom = 772.0
+fileContent = ExtResource("5_2r41h")
 
-[node name="File2" parent="." unique_id=1347343402 instance=ExtResource("2_w7c3h")]
-offset_left = 19.0
-offset_top = 503.0
-offset_right = 531.0
-offset_bottom = 1015.0
-
-[node name="File3" parent="." unique_id=513405007 instance=ExtResource("2_w7c3h")]
-offset_left = 690.0
-offset_top = 482.0
-offset_right = 1202.0
-offset_bottom = 994.0
-
-[node name="File4" parent="." unique_id=956036481 instance=ExtResource("2_w7c3h")]
-offset_left = 352.0
-offset_top = 452.0
-offset_right = 864.0
-offset_bottom = 964.0
-
-[node name="File5" parent="." unique_id=1476604730 instance=ExtResource("2_w7c3h")]
-offset_left = 1.0
-offset_top = 75.0
-offset_right = 513.0
-offset_bottom = 587.0
+[node name="File2" parent="." unique_id=2050730725 instance=ExtResource("2_w7c3h")]
+offset_left = 547.0
+offset_top = 402.0
+offset_right = 1059.0
+offset_bottom = 914.0
+fileContent = ExtResource("6_klq6b")
 
 [connection signal="area_entered" from="DesktopUIControl/FileContainer/Folder/Area2D" to="DesktopUIControl/FileContainer/Folder" method="_on_folder_area_entered"]
 [connection signal="area_exited" from="DesktopUIControl/FileContainer/Folder/Area2D" to="DesktopUIControl/FileContainer/Folder" method="_on_folder_area_exited"]
+[connection signal="pressed" from="DesktopUIControl/FilePopup/Button" to="." method="_on_popup_close_button_pressed"]
