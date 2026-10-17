@@ -5,7 +5,6 @@
 [ext_resource type="Texture2D" uid="uid://55pahtw0s5c8" path="res://assets/images/open-folder.png" id="2_w8frs"]
 [ext_resource type="Script" uid="uid://ck4d565uyrfwx" path="res://scripts/folder.gd" id="3_mx8sn"]
 [ext_resource type="Resource" uid="uid://bpb5tktt406iy" path="res://assets/resources/test_file.tres" id="5_2r41h"]
-[ext_resource type="Resource" uid="uid://b08gbblenyybb" path="res://assets/resources/test_file2.tres" id="6_klq6b"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_w2pfo"]
 size = Vector2(526, 505.00006)
@@ -49,15 +48,7 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 
-[node name="File2" parent="DesktopUIControl/FileContainer" unique_id=2050730725 instance=ExtResource("2_w7c3h")]
-layout_mode = 0
-offset_left = 547.0
-offset_top = 402.0
-offset_right = 1059.0
-offset_bottom = 914.0
-fileContent = ExtResource("6_klq6b")
-
-[node name="File" parent="DesktopUIControl/FileContainer" unique_id=1167000874 instance=ExtResource("2_w7c3h")]
+[node name="ChatFile" parent="DesktopUIControl/FileContainer" unique_id=1167000874 groups=["chatFile"] instance=ExtResource("2_w7c3h")]
 layout_mode = 0
 offset_left = 151.99998
 offset_top = 260.0

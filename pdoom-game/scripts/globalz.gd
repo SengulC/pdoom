@@ -17,6 +17,16 @@ func open_file_popup(file: File):
 	popup.visible = true
 	var label: Label = popup.get_child(0).get_child(0)
 	label.text = file.fileContent.content
+	
+	# live-update while popup is open
+	var on_changed := func(text: String): label.text = text
+	file.fileContent.changed_content.connect(on_changed)
+	
+	# disconnect when popup closes
+	popup.tree_exiting.connect(func():
+		if file.fileContent.changed_content.is_connected(on_changed):
+			file.fileContent.changed_content.disconnect(on_changed)
+	)
 
 func open_folder(folder: Folder) -> void:
 	var popup := FOLDER_POPUP.instantiate()
