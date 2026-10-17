@@ -26,6 +26,10 @@ window/size/viewport_height=720
 window/stretch/mode="canvas_items"
 window/stretch/aspect="expand"
 
+[global_group]
+
+filePopup=""
+
 [input]
 
 lmb_click={

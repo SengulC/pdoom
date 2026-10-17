@@ -62,29 +62,59 @@ position = Vector2(252.99976, 242.50006)
 scale = Vector2(0.99999994, 0.99999994)
 shape = SubResource("RectangleShape2D_w2pfo")
 
-[node name="File" parent="DesktopUIControl/FileContainer" unique_id=963720069 instance=ExtResource("2_w7c3h")]
-layout_mode = 0
+[node name="FilePopup" type="ColorRect" parent="DesktopUIControl" unique_id=1601710516 groups=["filePopup"]]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -250.0
+offset_top = -200.0
+offset_right = 250.0
+offset_bottom = 200.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
 
-[node name="File2" parent="DesktopUIControl/FileContainer" unique_id=734391997 instance=ExtResource("2_w7c3h")]
-layout_mode = 0
-offset_left = 346.0
-offset_top = 462.0
-offset_right = 858.0
-offset_bottom = 974.0
+[node name="Label" type="Label" parent="DesktopUIControl/FilePopup" unique_id=1801508849]
+layout_mode = 1
+offset_right = 76.0
+offset_bottom = 23.0
+text = "Asdfghjkl;
+saskjsaklsj
+sjsajlasj"
 
-[node name="File3" parent="DesktopUIControl/FileContainer" unique_id=1051618416 instance=ExtResource("2_w7c3h")]
-layout_mode = 0
-offset_left = 171.0
-offset_top = 386.0
-offset_right = 683.0
-offset_bottom = 898.0
+[node name="File" parent="." unique_id=963720069 instance=ExtResource("2_w7c3h")]
+offset_left = 152.0
+offset_top = 260.0
+offset_right = 664.0
+offset_bottom = 772.0
 
-[node name="File4" parent="DesktopUIControl/FileContainer" unique_id=2031189015 instance=ExtResource("2_w7c3h")]
-layout_mode = 0
-offset_left = 642.0
-offset_top = 137.0
-offset_right = 1154.0
-offset_bottom = 649.0
+[node name="File2" parent="." unique_id=1347343402 instance=ExtResource("2_w7c3h")]
+offset_left = 19.0
+offset_top = 503.0
+offset_right = 531.0
+offset_bottom = 1015.0
+
+[node name="File3" parent="." unique_id=513405007 instance=ExtResource("2_w7c3h")]
+offset_left = 690.0
+offset_top = 482.0
+offset_right = 1202.0
+offset_bottom = 994.0
+
+[node name="File4" parent="." unique_id=956036481 instance=ExtResource("2_w7c3h")]
+offset_left = 352.0
+offset_top = 452.0
+offset_right = 864.0
+offset_bottom = 964.0
+
+[node name="File5" parent="." unique_id=1476604730 instance=ExtResource("2_w7c3h")]
+offset_left = 1.0
+offset_top = 75.0
+offset_right = 513.0
+offset_bottom = 587.0
 
 [connection signal="area_entered" from="DesktopUIControl/FileContainer/Folder/Area2D" to="DesktopUIControl/FileContainer/Folder" method="_on_folder_area_entered"]
 [connection signal="area_exited" from="DesktopUIControl/FileContainer/Folder/Area2D" to="DesktopUIControl/FileContainer/Folder" method="_on_folder_area_exited"]
