@@ -15,6 +15,7 @@ offset_right = 250.0
 offset_bottom = 200.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 1
 color = Color(0, 0, 0, 1)
 script = ExtResource("1_8ciud")
 
@@ -39,8 +40,8 @@ layout_mode = 2
 
 [node name="Label" type="RichTextLabel" parent="Container/VBoxContainer" unique_id=1077879420]
 unique_name_in_owner = true
-custom_minimum_size = Vector2(500, 300)
-custom_maximum_size = Vector2(500, 300)
+custom_minimum_size = Vector2(500, 250)
+custom_maximum_size = Vector2(500, 250)
 layout_mode = 2
 text = "Asdfghjkl;
 saskjsaklsj
@@ -62,23 +63,35 @@ saskjsaklsj
 sjsajlasj
 "
 
-[node name="Buttons" type="HBoxContainer" parent="Container/VBoxContainer" unique_id=1965082623]
-visible = false
+[node name="Buttons" type="HBoxContainer" parent="Container/VBoxContainer" unique_id=1965082623 groups=["userChoiceBtns"]]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(300, 100)
+custom_maximum_size = Vector2(300, 100)
 layout_mode = 2
 size_flags_horizontal = 4
-size_flags_vertical = 0
+size_flags_vertical = 4
 
 [node name="Button" type="Button" parent="Container/VBoxContainer/Buttons" unique_id=973951836]
+visible = false
+z_index = 10
+custom_minimum_size = Vector2(100, 100)
+custom_maximum_size = Vector2(100, 100)
 layout_mode = 2
-size_flags_horizontal = 0
-size_flags_vertical = 8
+size_flags_horizontal = 4
+size_flags_vertical = 4
+mouse_filter = 1
 text = "Option 1"
 
-[node name="Button2" type="Button" parent="Container/VBoxContainer/Buttons" unique_id=1222283176]
+[node name="Button2" type="Button" parent="Container/VBoxContainer/Buttons" unique_id=2103390797]
+visible = false
+z_index = 10
+custom_minimum_size = Vector2(100, 100)
+custom_maximum_size = Vector2(100, 100)
 layout_mode = 2
-size_flags_horizontal = 8
-size_flags_vertical = 8
-text = "Option 2"
+size_flags_horizontal = 4
+size_flags_vertical = 4
+mouse_filter = 1
+text = "Option 1"
 
 [node name="Button" type="Button" parent="." unique_id=1600773996]
 layout_mode = 1
@@ -90,4 +103,6 @@ offset_bottom = 8.0
 grow_horizontal = 0
 text = "CLOSE"
 
+[connection signal="pressed" from="Container/VBoxContainer/Buttons/Button" to="." method="_on_user_choice_button_pressed"]
+[connection signal="pressed" from="Container/VBoxContainer/Buttons/Button2" to="." method="_on_user_choice_button_pressed"]
 [connection signal="pressed" from="Button" to="." method="_on_popup_close_button_pressed"]

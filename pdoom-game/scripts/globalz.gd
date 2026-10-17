@@ -6,8 +6,17 @@ const FILE = preload("uid://buph0h50ickkm")
 enum fileStates {IDLE, CLICKED, DRAGGING, DROPPED}
 var filesInFolder := []
 var openFiles := []
+var userChoiceBtns
+var userChoiceBtnsContainer
 
-var userChose := false # for user choice in chat progression
+# SIGNAL BUS
+signal user_chose(index: int) # for user choice in chat progression
+signal popup_opened
+#signal popup_closed
+signal choice_resolved(index: int)   # -1 = popup closed without a choice
+
+func is_choice_ui_ready() -> bool:
+	return is_instance_valid(userChoiceBtnsContainer) and userChoiceBtnsContainer.is_inside_tree()
 
 func add_file(file: File):
 	filesInFolder.append(file.duplicate())
