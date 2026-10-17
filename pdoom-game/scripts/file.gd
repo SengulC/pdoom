@@ -50,7 +50,7 @@ func _input(event: InputEvent):
 		#print("clicked once")
 		if last_keycode == event.as_text() and doubletap_time >= 0: 
 			#print("DOUBLETAP: ", event.as_text())
-			Globalz.populate_file_popup()
+			Globalz.populate_file_popup(self)
 			last_keycode = ""
 		else: last_keycode = event.as_text()
 
