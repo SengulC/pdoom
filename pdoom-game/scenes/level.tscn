@@ -1,8 +1,12 @@
 [gd_scene format=3 uid="uid://dsgejvhabk7xe"]
 
-[ext_resource type="Texture2D" uid="uid://xllk48fsm4sh" path="res://assets/images/file.png" id="1_2q6dc"]
 [ext_resource type="Script" uid="uid://deipbm2auqvy0" path="res://scripts/level_mgr.gd" id="1_w7c3h"]
-[ext_resource type="Script" uid="uid://y7hyxaensj5j" path="res://scripts/file.gd" id="3_w8frs"]
+[ext_resource type="PackedScene" uid="uid://buph0h50ickkm" path="res://scenes/file.tscn" id="2_w7c3h"]
+[ext_resource type="Texture2D" uid="uid://55pahtw0s5c8" path="res://assets/images/open-folder.png" id="2_w8frs"]
+[ext_resource type="Script" uid="uid://ck4d565uyrfwx" path="res://scripts/folder.gd" id="3_mx8sn"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_w2pfo"]
+size = Vector2(526, 505.00006)
 
 [node name="Level" type="Node2D" unique_id=1858162756]
 script = ExtResource("1_w7c3h")
@@ -40,11 +44,47 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="File" type="TextureButton" parent="DesktopUIControl/FileContainer" unique_id=739306482]
+[node name="Folder" type="TextureRect" parent="DesktopUIControl/FileContainer" unique_id=1177806281]
 layout_mode = 0
-offset_right = 512.0
-offset_bottom = 512.0
+offset_left = 302.99997
+offset_top = 201.99998
+offset_right = 815.0
+offset_bottom = 714.0
 scale = Vector2(0.2, 0.2)
 pivot_offset_ratio = Vector2(0.5, 0)
-texture_normal = ExtResource("1_2q6dc")
-script = ExtResource("3_w8frs")
+texture = ExtResource("2_w8frs")
+script = ExtResource("3_mx8sn")
+
+[node name="Area2D" type="Area2D" parent="DesktopUIControl/FileContainer/Folder" unique_id=1907994150]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DesktopUIControl/FileContainer/Folder/Area2D" unique_id=581461395]
+position = Vector2(252.99976, 242.50006)
+scale = Vector2(0.99999994, 0.99999994)
+shape = SubResource("RectangleShape2D_w2pfo")
+
+[node name="File" parent="DesktopUIControl/FileContainer" unique_id=963720069 instance=ExtResource("2_w7c3h")]
+layout_mode = 0
+
+[node name="File2" parent="DesktopUIControl/FileContainer" unique_id=734391997 instance=ExtResource("2_w7c3h")]
+layout_mode = 0
+offset_left = 346.0
+offset_top = 462.0
+offset_right = 858.0
+offset_bottom = 974.0
+
+[node name="File3" parent="DesktopUIControl/FileContainer" unique_id=1051618416 instance=ExtResource("2_w7c3h")]
+layout_mode = 0
+offset_left = 171.0
+offset_top = 386.0
+offset_right = 683.0
+offset_bottom = 898.0
+
+[node name="File4" parent="DesktopUIControl/FileContainer" unique_id=2031189015 instance=ExtResource("2_w7c3h")]
+layout_mode = 0
+offset_left = 642.0
+offset_top = 137.0
+offset_right = 1154.0
+offset_bottom = 649.0
+
+[connection signal="area_entered" from="DesktopUIControl/FileContainer/Folder/Area2D" to="DesktopUIControl/FileContainer/Folder" method="_on_folder_area_entered"]
+[connection signal="area_exited" from="DesktopUIControl/FileContainer/Folder/Area2D" to="DesktopUIControl/FileContainer/Folder" method="_on_folder_area_exited"]

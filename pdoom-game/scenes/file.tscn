@@ -1,0 +1,22 @@
+[gd_scene format=3 uid="uid://buph0h50ickkm"]
+
+[ext_resource type="Texture2D" uid="uid://xllk48fsm4sh" path="res://assets/images/file.png" id="1_g4uxh"]
+[ext_resource type="Script" uid="uid://y7hyxaensj5j" path="res://scripts/file.gd" id="2_wr4vy"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_w2pfo"]
+size = Vector2(420, 530.0001)
+
+[node name="File" type="TextureButton" unique_id=963720069]
+offset_right = 512.0
+offset_bottom = 512.0
+scale = Vector2(0.2, 0.2)
+pivot_offset_ratio = Vector2(0.5, 0)
+texture_normal = ExtResource("1_g4uxh")
+script = ExtResource("2_wr4vy")
+
+[node name="FileArea2D" type="Area2D" parent="." unique_id=1074028692]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="FileArea2D" unique_id=457214113]
+position = Vector2(255.99982, 254.99995)
+scale = Vector2(0.99999964, 0.99999964)
+shape = SubResource("RectangleShape2D_w2pfo")
