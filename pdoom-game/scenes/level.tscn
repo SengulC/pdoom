@@ -1,0 +1,50 @@
+[gd_scene format=3 uid="uid://dsgejvhabk7xe"]
+
+[ext_resource type="Texture2D" uid="uid://xllk48fsm4sh" path="res://assets/images/file.png" id="1_2q6dc"]
+[ext_resource type="Script" uid="uid://deipbm2auqvy0" path="res://scripts/level_mgr.gd" id="1_w7c3h"]
+[ext_resource type="Script" uid="uid://y7hyxaensj5j" path="res://scripts/file.gd" id="3_w8frs"]
+
+[node name="Level" type="Node2D" unique_id=1858162756]
+script = ExtResource("1_w7c3h")
+
+[node name="DesktopUIControl" type="Control" parent="." unique_id=342933659]
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_right = 1080.0
+offset_bottom = 720.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_vertical = 4
+
+[node name="ColorRectBG" type="ColorRect" parent="DesktopUIControl" unique_id=824963458]
+layout_mode = 0
+offset_right = 1080.0
+offset_bottom = 720.0
+color = Color(0.26050612, 0.26050615, 0.26050612, 1)
+
+[node name="TextureRect" type="TextureRect" parent="DesktopUIControl" unique_id=837392315]
+visible = false
+layout_mode = 0
+offset_right = 1080.0
+offset_bottom = 720.0
+
+[node name="FileContainer" type="Control" parent="DesktopUIControl" unique_id=2078322934]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="File" type="TextureButton" parent="DesktopUIControl/FileContainer" unique_id=739306482]
+layout_mode = 0
+offset_right = 512.0
+offset_bottom = 512.0
+scale = Vector2(0.2, 0.2)
+pivot_offset_ratio = Vector2(0.5, 0)
+texture_normal = ExtResource("1_2q6dc")
+script = ExtResource("3_w8frs")
