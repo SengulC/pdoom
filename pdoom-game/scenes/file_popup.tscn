@@ -3,7 +3,6 @@
 [ext_resource type="Script" uid="uid://d0d712jm1iqtq" path="res://scripts/file_popup.gd" id="1_8ciud"]
 
 [node name="FilePopup" type="ColorRect" unique_id=1449711572 groups=["filePopup"]]
-visible = false
 z_index = 5
 anchors_preset = 8
 anchor_left = 0.5
@@ -31,11 +30,27 @@ theme_override_constants/margin_top = 50
 theme_override_constants/margin_right = 50
 theme_override_constants/margin_bottom = 50
 
-[node name="Label" type="Label" parent="Container" unique_id=2080309191]
+[node name="Label" type="RichTextLabel" parent="Container" unique_id=1077879420]
 layout_mode = 2
 text = "Asdfghjkl;
 saskjsaklsj
-sjsajlasj"
+sjsajlasj
+Asdfghjkl;
+saskjsaklsj
+sjsajlasj
+Asdfghjkl;
+saskjsaklsj
+sjsajlasj
+Asdfghjkl;
+saskjsaklsj
+sjsajlasj
+Asdfghjkl;
+saskjsaklsj
+sjsajlasj
+Asdfghjkl;
+saskjsaklsj
+sjsajlasj
+"
 
 [node name="Button" type="Button" parent="." unique_id=1600773996]
 layout_mode = 1

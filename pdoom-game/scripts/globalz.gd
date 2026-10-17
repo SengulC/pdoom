@@ -26,7 +26,7 @@ func open_file_popup(file: File):
 	desktop.add_child(popup)
 	popup.visible = true
 
-	var label: Label = popup.get_child(0).get_child(0)
+	var label: RichTextLabel = popup.get_child(0).get_child(0)
 	label.text = content.content
 
 	var on_changed := func(text: String): label.text = text
