@@ -15,13 +15,17 @@ func _process(_delta: float) -> void:
 		_drag()
 	if currState == fileStates.DROPPED:
 		_drop()
+	#print(Input.get_last_mouse_velocity())
 
 func _drag():
 	print("dragging")
-	var currentMousePos = get_global_mouse_position()
-	var offsetVector = Vector2(0, 0)
-	var finalFilePos = currentMousePos + offsetVector
-	position = finalFilePos
+	if Input.get_last_mouse_velocity().abs() > Vector2.ZERO:
+		var currentMousePos = get_global_mouse_position()
+		var offsetVector = Vector2((size.x*scale.x)/pivot_offset_ratio.x, 0)
+		#var offsetVector = Vector2(-250,0)
+		var finalFilePos = currentMousePos - offsetVector
+		position = finalFilePos
+		print(position, currentMousePos)
 
 func _drop():
 	print("dropping")
@@ -29,6 +33,7 @@ func _drop():
 	currState = fileStates.IDLE
 
 func _input(event):
+	# if user's mouse is in area of file, has clicked, and the mouse is in motion
 	if event.is_action_pressed("lmb_click") and mouseInArea:
 		currState = fileStates.DRAGGING
 	if event.is_action_released("lmb_click"):
