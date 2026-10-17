@@ -1,0 +1,41 @@
+[gd_scene format=3 uid="uid://bhrxyglvvdsj4"]
+
+[ext_resource type="Script" uid="uid://d0d712jm1iqtq" path="res://scripts/file_popup.gd" id="1_ewifn"]
+
+[node name="FolderPopup" type="ColorRect" unique_id=1449711572 groups=["filePopup"]]
+z_index = 5
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -250.0
+offset_top = -200.0
+offset_right = 250.0
+offset_bottom = 200.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(1, 1, 1, 0.1882353)
+script = ExtResource("1_ewifn")
+folder = true
+
+[node name="Container" type="BoxContainer" parent="." unique_id=1954902812]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(500, 400)
+custom_maximum_size = Vector2(500, 400)
+layout_mode = 0
+offset_right = 500.0
+offset_bottom = 400.0
+alignment = 1
+
+[node name="Button" type="Button" parent="." unique_id=1600773996]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -8.0
+offset_bottom = 8.0
+grow_horizontal = 0
+text = "CLOSE"
+
+[connection signal="pressed" from="Button" to="." method="_on_popup_close_button_pressed"]

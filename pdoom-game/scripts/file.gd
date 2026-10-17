@@ -40,7 +40,7 @@ func _drop():
 	queue_free()
 
 func _open_file():
-	Globalz.populate_file_popup(self)
+	Globalz.open_file_popup(self)
 
 func _input(event: InputEvent):
 	# mouse clicking on file should activate clicking state (which could lead to drag and drop or nothing at all)

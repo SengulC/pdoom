@@ -4,12 +4,13 @@
 [ext_resource type="Script" uid="uid://y7hyxaensj5j" path="res://scripts/file.gd" id="2_wr4vy"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_w2pfo"]
-size = Vector2(420, 530.0001)
+size = Vector2(420, 293.28888)
 
 [node name="File" type="TextureButton" unique_id=963720069]
-offset_right = 512.0
-offset_bottom = 512.0
-scale = Vector2(0.2, 0.2)
+custom_minimum_size = Vector2(100, 100)
+custom_maximum_size = Vector2(100, 100)
+offset_right = 75.0
+offset_bottom = 100.0
 pivot_offset_ratio = Vector2(0.5, 0)
 texture_normal = ExtResource("1_g4uxh")
 script = ExtResource("2_wr4vy")
@@ -17,6 +18,7 @@ script = ExtResource("2_wr4vy")
 [node name="FileArea2D" type="Area2D" parent="." unique_id=1074028692]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="FileArea2D" unique_id=457214113]
-position = Vector2(255.99982, 254.99995)
-scale = Vector2(0.99999964, 0.99999964)
+z_index = 5
+position = Vector2(51.000015, 51)
+scale = Vector2(0.21369866, 0.3614184)
 shape = SubResource("RectangleShape2D_w2pfo")
