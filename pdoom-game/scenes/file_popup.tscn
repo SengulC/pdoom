@@ -68,11 +68,10 @@ unique_name_in_owner = true
 custom_minimum_size = Vector2(300, 100)
 custom_maximum_size = Vector2(300, 100)
 layout_mode = 2
-size_flags_horizontal = 4
+size_flags_horizontal = 8
 size_flags_vertical = 4
 
 [node name="Button" type="Button" parent="Container/VBoxContainer/Buttons" unique_id=973951836]
-visible = false
 z_index = 10
 custom_minimum_size = Vector2(100, 100)
 custom_maximum_size = Vector2(100, 100)
@@ -83,7 +82,6 @@ mouse_filter = 1
 text = "Option 1"
 
 [node name="Button2" type="Button" parent="Container/VBoxContainer/Buttons" unique_id=2103390797]
-visible = false
 z_index = 10
 custom_minimum_size = Vector2(100, 100)
 custom_maximum_size = Vector2(100, 100)
