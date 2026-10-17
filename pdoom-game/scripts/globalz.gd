@@ -5,27 +5,38 @@ const FILE = preload("uid://buph0h50ickkm")
 
 enum fileStates {IDLE, CLICKED, DRAGGING, DROPPED}
 var filesInFolder := []
+var openFiles := []
 
 func add_file(file: File):
 	filesInFolder.append(file.duplicate())
 	print("added file to folder", filesInFolder)
 
 func open_file_popup(file: File):
+	var fileRef = file.fileRef
+	if fileRef in openFiles:
+		print("file alrdy open exiting early")
+		return
+
+	openFiles.append(fileRef)
+
+	var content: FileContent = file.fileContent
 	var popup := FILE_POPUP.instantiate()
+	popup.fileRef = fileRef
 	var desktop := get_tree().get_first_node_in_group("desktop")
 	desktop.add_child(popup)
 	popup.visible = true
+
 	var label: Label = popup.get_child(0).get_child(0)
-	label.text = file.fileContent.content
-	
-	# live-update while popup is open
+	label.text = content.content
+
 	var on_changed := func(text: String): label.text = text
-	file.fileContent.changed_content.connect(on_changed)
-	
-	# disconnect when popup closes
+	content.changed_content.connect(on_changed)
+
 	popup.tree_exiting.connect(func():
-		if file.fileContent.changed_content.is_connected(on_changed):
-			file.fileContent.changed_content.disconnect(on_changed)
+		print("popup closed")
+		if content.changed_content.is_connected(on_changed):
+			content.changed_content.disconnect(on_changed)
+		openFiles.erase(fileRef)
 	)
 
 func open_folder(folder: Folder) -> void:

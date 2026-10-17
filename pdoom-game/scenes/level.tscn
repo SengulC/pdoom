@@ -55,6 +55,7 @@ offset_top = 260.0
 offset_right = 664.0
 offset_bottom = 772.0
 fileContent = ExtResource("5_2r41h")
+fileRef = "chat"
 
 [node name="Folder" type="TextureRect" parent="DesktopUIControl/FileContainer" unique_id=1177806281]
 layout_mode = 0

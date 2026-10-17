@@ -6,6 +6,8 @@ var dragging := false
 @export var fileOverFolder := false
 @export var inFolder := false
 @export var fileContent : FileContent
+@export var fileCurrentlyOpen := false 
+@export var fileRef := ""
 
 const DRAG_THRESHOLD := 4.0
 var grab_offset := Vector2.ZERO
@@ -41,6 +43,7 @@ func _drop():
 
 func _open_file():
 	Globalz.open_file_popup(self)
+	fileCurrentlyOpen = true
 
 func _input(event: InputEvent):
 	# mouse clicking on file should activate clicking state (which could lead to drag and drop or nothing at all)
