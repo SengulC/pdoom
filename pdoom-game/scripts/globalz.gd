@@ -7,6 +7,8 @@ enum fileStates {IDLE, CLICKED, DRAGGING, DROPPED}
 var filesInFolder := []
 var openFiles := []
 
+var userChose := false # for user choice in chat progression
+
 func add_file(file: File):
 	filesInFolder.append(file.duplicate())
 	print("added file to folder", filesInFolder)
@@ -26,7 +28,7 @@ func open_file_popup(file: File):
 	desktop.add_child(popup)
 	popup.visible = true
 
-	var label: RichTextLabel = popup.get_child(0).get_child(0)
+	var label: RichTextLabel = popup.find_child("Label", true, false)
 	label.text = content.content
 
 	var on_changed := func(text: String): label.text = text
