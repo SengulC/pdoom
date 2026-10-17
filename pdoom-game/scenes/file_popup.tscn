@@ -1,0 +1,49 @@
+[gd_scene format=3 uid="uid://j322c0mbxv58"]
+
+[ext_resource type="Script" uid="uid://d0d712jm1iqtq" path="res://scripts/file_popup.gd" id="1_8ciud"]
+
+[node name="FilePopup" type="ColorRect" unique_id=1449711572 groups=["filePopup"]]
+visible = false
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -250.0
+offset_top = -200.0
+offset_right = 250.0
+offset_bottom = 200.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+script = ExtResource("1_8ciud")
+
+[node name="Container" type="MarginContainer" parent="." unique_id=1418792197]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 50
+theme_override_constants/margin_top = 50
+theme_override_constants/margin_right = 50
+theme_override_constants/margin_bottom = 50
+
+[node name="Label" type="Label" parent="Container" unique_id=2080309191]
+layout_mode = 2
+text = "Asdfghjkl;
+saskjsaklsj
+sjsajlasj"
+
+[node name="Button" type="Button" parent="." unique_id=1600773996]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -8.0
+offset_bottom = 8.0
+grow_horizontal = 0
+text = "CLOSE"
+
+[connection signal="pressed" from="Button" to="." method="_on_popup_close_button_pressed"]

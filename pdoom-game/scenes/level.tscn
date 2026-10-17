@@ -4,6 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://buph0h50ickkm" path="res://scenes/file.tscn" id="2_w7c3h"]
 [ext_resource type="Texture2D" uid="uid://55pahtw0s5c8" path="res://assets/images/open-folder.png" id="2_w8frs"]
 [ext_resource type="Script" uid="uid://ck4d565uyrfwx" path="res://scripts/folder.gd" id="3_mx8sn"]
+[ext_resource type="PackedScene" uid="uid://j322c0mbxv58" path="res://scenes/file_popup.tscn" id="4_klq6b"]
 [ext_resource type="Resource" uid="uid://bpb5tktt406iy" path="res://assets/resources/test_file.tres" id="5_2r41h"]
 [ext_resource type="Resource" uid="uid://b08gbblenyybb" path="res://assets/resources/test_file2.tres" id="6_klq6b"]
 
@@ -13,7 +14,7 @@ size = Vector2(526, 505.00006)
 [node name="Level" type="Node2D" unique_id=1858162756]
 script = ExtResource("1_w7c3h")
 
-[node name="DesktopUIControl" type="Control" parent="." unique_id=342933659]
+[node name="DesktopUIControl" type="Control" parent="." unique_id=342933659 groups=["desktop"]]
 layout_mode = 3
 anchors_preset = 8
 anchor_left = 0.5
@@ -64,49 +65,19 @@ position = Vector2(252.99976, 242.50006)
 scale = Vector2(0.99999994, 0.99999994)
 shape = SubResource("RectangleShape2D_w2pfo")
 
-[node name="FilePopup" type="ColorRect" parent="DesktopUIControl" unique_id=1601710516 groups=["filePopup"]]
-visible = false
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -250.0
-offset_top = -200.0
-offset_right = 250.0
-offset_bottom = 200.0
-grow_horizontal = 2
-grow_vertical = 2
-color = Color(0, 0, 0, 1)
-
-[node name="Container" type="MarginContainer" parent="DesktopUIControl/FilePopup" unique_id=1585860785]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_constants/margin_left = 50
-theme_override_constants/margin_top = 50
-theme_override_constants/margin_right = 50
-theme_override_constants/margin_bottom = 50
-
-[node name="Label" type="Label" parent="DesktopUIControl/FilePopup/Container" unique_id=1801508849]
-layout_mode = 2
-text = "Asdfghjkl;
-saskjsaklsj
-sjsajlasj"
-
-[node name="Button" type="Button" parent="DesktopUIControl/FilePopup" unique_id=175405501]
-layout_mode = 1
-anchors_preset = 1
-anchor_left = 1.0
-anchor_right = 1.0
-offset_left = -8.0
-offset_bottom = 8.0
-grow_horizontal = 0
-text = "CLOSE"
+[node name="FilePopup" parent="DesktopUIControl" unique_id=1449711572 instance=ExtResource("4_klq6b")]
+layout_mode = 0
+anchors_preset = 0
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_left = 0.0
+offset_top = 0.0
+offset_right = 500.0
+offset_bottom = 400.0
+grow_horizontal = 1
+grow_vertical = 1
 
 [node name="File" parent="." unique_id=963720069 instance=ExtResource("2_w7c3h")]
 offset_left = 152.0
@@ -124,4 +95,3 @@ fileContent = ExtResource("6_klq6b")
 
 [connection signal="area_entered" from="DesktopUIControl/FileContainer/Folder/Area2D" to="DesktopUIControl/FileContainer/Folder" method="_on_folder_area_entered"]
 [connection signal="area_exited" from="DesktopUIControl/FileContainer/Folder/Area2D" to="DesktopUIControl/FileContainer/Folder" method="_on_folder_area_exited"]
-[connection signal="pressed" from="DesktopUIControl/FilePopup/Button" to="." method="_on_popup_close_button_pressed"]
