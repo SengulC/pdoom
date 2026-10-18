@@ -10,6 +10,7 @@
 [ext_resource type="Resource" uid="uid://b08gbblenyybb" path="res://assets/resources/instructions_file.tres" id="7_klq6b"]
 [ext_resource type="PackedScene" uid="uid://4jfd0g7hhdvg" path="res://scenes/grid_game.tscn" id="9_8c41q"]
 [ext_resource type="Texture2D" uid="uid://dtie50n3p1j1y" path="res://assets/images/hack.png" id="10_olg7q"]
+[ext_resource type="PackedScene" uid="uid://c3xhoyr1y57lj" path="res://scenes/grid_game2.tscn" id="10_t1rx8"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_w2pfo"]
 size = Vector2(526, 505.00006)
@@ -108,14 +109,14 @@ fileContent = ExtResource("5_2r41h")
 fileRef = "Question.txt"
 
 [node name="Minigame" type="CanvasLayer" parent="." unique_id=1733824141]
-visible = false
 
 [node name="GridGame1" parent="Minigame" unique_id=75310135 groups=["gridGame"] instance=ExtResource("9_8c41q")]
 process_mode = 4
+visible = false
 position = Vector2(0, -20)
 
-[node name="GridGameNode2D" parent="Minigame" unique_id=478305998 instance=ExtResource("9_8c41q")]
-position = Vector2(0, -20)
+[node name="GridGame2" parent="Minigame" unique_id=272744610 groups=["gridGame"] instance=ExtResource("10_t1rx8")]
+visible = false
 
 [node name="Hack" type="TextureButton" parent="." unique_id=86627380 groups=["hackExe"]]
 visible = false

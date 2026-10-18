@@ -172,6 +172,7 @@ func begin_phase() -> void:
 			
 			if speaker == "ending":
 				get_tree().change_scene_to_packed(ENDING)
+				return
 			
 			if speaker == "minigame":
 				print('minigame time')
@@ -217,27 +218,39 @@ func begin_phase() -> void:
 			Globalz.budget_reduced.emit(Globalz.currBudget)
 			#print("sent out signal")
 
+func _get_chat_file() -> File:
+	for f in get_tree().get_nodes_in_group("chatFile"):
+		if is_instance_valid(f):
+			return f
+	return null
+
 const RESTART_DELAY = 5.0
 func system_reset():
-	#overlay.
-	# IF CHAT NOT INFOLDER: SET FILE AND POPUP INVISIBLE AND CLEAR CONTENT, THEN ON SOME TIMER RE-ACTIVATE
-	if not chatFile.inFolder:
-		chatFile.visible = false
-		chatFile.fileContent.content = ""
+	var chat_in_folder := false
+	for t: File in filesInFolder:
+		if t.fileRef == "chat.txt":
+			chat_in_folder = true
+
+	if not chat_in_folder:
+		var cf := _get_chat_file()
+		if cf:
+			cf.visible = false
+		chatContent.content = ""
 		close_chat_file_popup()
 
-	# REMOVE OTHER FILES IN DESKTOP
 	var activeFiles := get_tree().get_nodes_in_group("file")
-	for file:File in activeFiles:
+	for file: File in activeFiles:
 		if file.fileRef != "chat.txt" and !file.inFolder:
 			file.queue_free()
-	
-	pulse_params([5.0, 1.0])   # glitch_rate -> 5, glitch_intensity -> 1, then back
-	fade_to_black(1.5)         # fade out
+
+	pulse_params([5.0, 1.0])
+	fade_to_black(1.5)
 	await get_tree().create_timer(RESTART_DELAY).timeout
-	chatFile.visible = true
-	fade_to_black(0.5, 0.0)    # fade back in
-	return
+
+	var cf2 := _get_chat_file()
+	if cf2:
+		cf2.visible = true
+	fade_to_black(0.5, 0.0)
 
 # SHADER FADE IN/OUT AND PULSE
 var params := ["glitch_rate", "glitch_intensity"]
