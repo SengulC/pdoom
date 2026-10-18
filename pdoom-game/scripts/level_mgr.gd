@@ -2,7 +2,7 @@ extends Node2D
 
 const SECS_PER_CHAR := 0.05
 const MIN_DELAY := 0.5
-const START_DELAY := 2.5
+const START_DELAY := 10.5
 
 var chatFile: File
 var chatContent: FileContent

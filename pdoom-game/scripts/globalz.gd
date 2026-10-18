@@ -128,9 +128,9 @@ func _refresh_folder_contents(container: Container) -> void:
 			shown[ref].queue_free()
 
 # LEVEL/GAME MANAGEMENT------------------------------
-const SECS_PER_CHAR := 0.05
+const SECS_PER_CHAR := 0.1
 const MIN_DELAY := 0.5
-const START_DELAY := 2.5
+#const START_DELAY := 10.0
 var chatFile: File
 var chatContent: FileContent
 var overlay: ColorRect
