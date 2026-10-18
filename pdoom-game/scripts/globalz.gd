@@ -11,13 +11,13 @@ var userChoiceBtnsContainer
 
 var currBudget := 1000
 var budgetRef
+var mouseOverFolderPopupArea = false
 
 # SIGNAL BUS
 signal user_chose(index: int) # for user choice in chat progression
 signal popup_opened
 signal budget_reduced(amount: int)
 signal inner_dialog(words: String)
-#signal hide_inner()
 signal choice_resolved(index: int)   # -1 = popup closed without a choice
 
 func is_choice_ui_ready() -> bool:
@@ -26,6 +26,16 @@ func is_choice_ui_ready() -> bool:
 func add_file(file: File):
 	filesInFolder.append(file.duplicate())
 	print("added file to folder", filesInFolder)
+	
+	# folder alrdy open: call for resync
+	if get_tree().get_first_node_in_group("folderPopup"):
+		open_folder()
+
+func remove_file(ref: String) -> void:
+	for i in range(filesInFolder.size() - 1, -1, -1):
+		if filesInFolder[i].fileRef == ref:
+			filesInFolder[i].free()
+			filesInFolder.remove_at(i)
 
 func open_file_popup(file: File):
 	var fileRef = file.fileRef
@@ -55,16 +65,53 @@ func open_file_popup(file: File):
 		openFiles.erase(fileRef)
 	)
 
-func open_folder(folder: Folder) -> void:
+var folderPopupArea: Area2D
+
+func is_mouse_over_folder_popup() -> bool:
+	if not is_instance_valid(folderPopupArea):
+		return false
+	var col: CollisionShape2D = folderPopupArea.find_child("CollisionShape2D", true, false)
+	var rect_shape := col.shape as RectangleShape2D
+	if rect_shape == null:
+		return false
+	# convert mouse into the collision shape's local space, then test against the shape's extents
+	var local_mouse := col.to_local(col.get_global_mouse_position())
+	var half := rect_shape.size / 2.0
+	return Rect2(-half, rect_shape.size).has_point(local_mouse)
+
+func open_folder() -> void:
+	var existing := get_tree().get_first_node_in_group("folderPopup")
+	if existing:
+		# alrdy open: just sync its contents with filesInFolder
+		_refresh_folder_contents(existing.find_child("Container", true, false))
+		return
+
 	var popup := FOLDER_POPUP.instantiate()
 	var desktop := get_tree().get_first_node_in_group("desktop")
 	desktop.add_child(popup)
+	folderPopupArea = popup.find_child("FolderPopupArea2D", true, false)
 
-	var container: Container = popup.find_child("Container", true, false)
+	_refresh_folder_contents(popup.find_child("Container", true, false))
 
-	for template : File in filesInFolder:
-		var file: File = template.duplicate() # fresh copy 4 each open
-		file.inFolder = true
-		file.currState = Globalz.fileStates.IDLE
-		file.fileOverFolder = false
-		container.add_child(file)
+func _refresh_folder_contents(container: Container) -> void:
+	# files currently displayed
+	var shown := {}
+	for child in container.get_children():
+		if child is File:
+			shown[child.fileRef] = child
+
+	# adding files in filesInFolder but not yet displayed
+	var wanted := {}
+	for template: File in filesInFolder:
+		wanted[template.fileRef] = true
+		if not shown.has(template.fileRef):
+			var file: File = template.duplicate()
+			file.inFolder = true
+			file.currState = fileStates.IDLE
+			file.fileOverFolder = false
+			container.add_child(file)
+
+	# remove displayed files that are no longer in filesInFolder
+	for ref in shown:
+		if not wanted.has(ref):
+			shown[ref].queue_free()

@@ -40,4 +40,4 @@ func _input(event: InputEvent):
 		grab_offset = press_pos - global_position
 
 		if event is InputEventMouseButton and event.double_click:
-			Globalz.open_folder(self)
+			Globalz.open_folder()

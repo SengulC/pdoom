@@ -35,6 +35,7 @@ desktop=""
 chatFile=""
 userChoiceBtns=""
 budgetLabel=""
+folderPopup=""
 
 [input]
 

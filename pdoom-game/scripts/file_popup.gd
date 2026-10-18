@@ -26,3 +26,11 @@ func close_popup():
 func _on_user_choice_button_pressed() -> void:
 	print("pressing user chocieeeeee")
 	Globalz.user_chose.emit(0)
+
+#func _on_folder_popup_area_mouse_entered() -> void:
+	#print("MOUSE INSIDE FOLDER")
+	#Globalz.mouseOverFolderPopupArea = true
+#
+#func _on_folder_popup_area_mouse_exited() -> void:
+	#print("MOUSE OUTSIDE FOLDER")
+	#Globalz.mouseOverFolderPopupArea = false

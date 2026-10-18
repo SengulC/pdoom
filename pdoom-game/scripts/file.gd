@@ -9,6 +9,8 @@ var dragging := false
 @export var fileCurrentlyOpen := false 
 @export var fileRef := ""
 
+var homeContainer # folder container inFolder
+
 const DRAG_THRESHOLD := 4.0
 var grab_offset := Vector2.ZERO
 var press_pos := Vector2.ZERO
@@ -31,6 +33,10 @@ func _clicked():
 	# only start dragging after the mouse actually moves past a threshold
 	if not dragging and mouse_pos.distance_to(press_pos) > DRAG_THRESHOLD:
 		dragging = true
+		if inFolder and get_parent() is Container:
+			homeContainer = get_parent()
+			# takeout of folder container for dragging
+			reparent(get_tree().get_first_node_in_group("desktop"), true)
 	# keep the original grab point under the cursor, so no jump
 	if dragging:
 		global_position = mouse_pos - grab_offset
@@ -45,6 +51,19 @@ func _open_file():
 	Globalz.open_file_popup(self)
 	fileCurrentlyOpen = true
 
+func _return_to_folder() -> void:
+	if is_instance_valid(homeContainer):
+		reparent(homeContainer, false)
+	#else:
+		#_remove_from_folder()
+
+func _remove_from_folder() -> void:
+	Globalz.remove_file(fileRef)
+	inFolder = false
+	fileOverFolder = false
+	homeContainer = null
+	print("removed from folder: ", fileRef)
+
 func _input(event: InputEvent):
 	# mouse clicking on file should activate clicking state (which could lead to drag and drop or nothing at all)
 	# and we also check/wait for double click
@@ -57,14 +76,26 @@ func _input(event: InputEvent):
 		if event is InputEventMouseButton and event.double_click:
 			_open_file()
 			currState = Globalz.fileStates.IDLE  # to not start a drag on potential doubletap
+	
+	if event.is_action_released("lmb_click") and currState == Globalz.fileStates.CLICKED:
+		# releasing when file is being hovered over folder should drop the file in that folder
+		if fileOverFolder:
+			currState = Globalz.fileStates.DROPPED
+		elif inFolder and dragging:
+			# if dragging file inFolder...
+			# if overFolderArea, keep/return to folder
+			if Globalz.is_mouse_over_folder_popup():
+				_return_to_folder()
+			# else, remove from folder!
+			else:
+				_remove_from_folder()
+			currState = Globalz.fileStates.IDLE
+			dragging = false
+		# releasing else, reverts to idle, so nothing
+		else:
+			currState = Globalz.fileStates.IDLE
+			dragging = false
 
-	# releasing when file is being hovered over folder should drop the file in that folder
-	if event.is_action_released("lmb_click") and fileOverFolder:
-		currState = Globalz.fileStates.DROPPED
-	# releasing elseif, reverts to idle, so nothing
-	elif event.is_action_released("lmb_click"):
-		currState = Globalz.fileStates.IDLE
-		dragging = false
 
 func _on_file_mouse_entered() -> void:
 	mouseInArea = true
