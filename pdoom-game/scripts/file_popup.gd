@@ -4,7 +4,7 @@ extends ColorRect
 @export var fileRef : String
 
 func _ready() -> void:
-	#print(get_tree_string_pretty())
+	# make userChoiceBtns container and array ref.s ready for access
 	if not folder:
 		Globalz.userChoiceBtnsContainer = find_child("Buttons", true, false)
 		Globalz.userChoiceBtns = Globalz.userChoiceBtnsContainer.get_children()
