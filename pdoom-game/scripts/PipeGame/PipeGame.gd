@@ -2,7 +2,7 @@ extends Node2D
 
 signal level_won
 
-@export var max_moves := 10
+@export var max_moves := 3
 @export var terrain_set := 0
 @export var terrain_id := 0
 
