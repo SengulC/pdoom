@@ -9,10 +9,13 @@ var openFiles := []
 var userChoiceBtns
 var userChoiceBtnsContainer
 
+var currBudget := 1000
+var budgetRef
+
 # SIGNAL BUS
 signal user_chose(index: int) # for user choice in chat progression
 signal popup_opened
-#signal popup_closed
+signal budget_reduced(amount: int)
 signal choice_resolved(index: int)   # -1 = popup closed without a choice
 
 func is_choice_ui_ready() -> bool:

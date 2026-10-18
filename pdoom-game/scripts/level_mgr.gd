@@ -15,10 +15,16 @@ func _get_cur_time() -> String:
 	return "%s:%s:%s" %[Time.get_time_dict_from_system().hour, Time.get_time_dict_from_system().minute, Time.get_time_dict_from_system().second];
 
 func begin_phase_01() -> void:
-	for dict in Phases.phase01:
+	for idx in Phases.phase01.size():
+		var dict: Dictionary = Phases.phase01[idx]
 		for speaker in dict:
 			var line = dict[speaker]
-			print(speaker)
+			
+			# make budget red. calc for current line
+			var budgetReduction = Phases.phase01_budget_decr[idx]
+			Globalz.currBudget -= budgetReduction
+			print("we are on idx %s therefore reducing budget results in %s" %[idx, Globalz.currBudget])
+			
 			## user choice presented, must wait until they make their choice!
 			if speaker == "userChoice":
 				var choice := -1
@@ -38,6 +44,9 @@ func begin_phase_01() -> void:
 				continue
 			
 			## regular chat prog.
-			chatContent.append("%s: %s - %s\n" % [_get_cur_time(), line, speaker]) #TODO: TOFIX
+			chatContent.append("%s: %s - %s\n" % [_get_cur_time(), line, speaker])
 			await get_tree().create_timer(maxf(MIN_DELAY, line.length() * SECS_PER_CHAR)).timeout
-			#await get_tree().create_timer(MIN_DELAY).timeout
+			
+			# send signal out for actually changing budget after text has been sent/received
+			Globalz.budget_reduced.emit(Globalz.currBudget)
+			print("sent out signal")
