@@ -108,19 +108,14 @@ fileContent = ExtResource("5_2r41h")
 fileRef = "Question.txt"
 
 [node name="Minigame" type="CanvasLayer" parent="." unique_id=1733824141]
+visible = false
 
 [node name="GridGame1" parent="Minigame" unique_id=75310135 groups=["gridGame"] instance=ExtResource("9_8c41q")]
 process_mode = 4
-visible = false
 position = Vector2(0, -20)
 
-[node name="GridGame2" parent="Minigame" unique_id=1333074519 groups=["gridGame"] instance=ExtResource("9_8c41q")]
-process_mode = 4
-visible = false
+[node name="GridGameNode2D" parent="Minigame" unique_id=478305998 instance=ExtResource("9_8c41q")]
 position = Vector2(0, -20)
-
-[node name="BoardTileMapLayer" parent="Minigame/GridGame2/GridNode2D" parent_id_path=PackedInt32Array(1333074519, 1389949637) index="0" unique_id=1843460464]
-visible = false
 
 [node name="Hack" type="TextureButton" parent="." unique_id=86627380 groups=["hackExe"]]
 visible = false
@@ -134,5 +129,3 @@ texture_normal = ExtResource("10_olg7q")
 [connection signal="area_entered" from="DesktopUIControl/FileContainer/Folder/Area2D" to="DesktopUIControl/FileContainer/Folder" method="_on_folder_area_entered"]
 [connection signal="area_exited" from="DesktopUIControl/FileContainer/Folder/Area2D" to="DesktopUIControl/FileContainer/Folder" method="_on_folder_area_exited"]
 [connection signal="pressed" from="Hack" to="." method="_on_hack_pressed"]
-
-[editable path="Minigame/GridGame2"]

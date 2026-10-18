@@ -4,15 +4,15 @@ extends Node
 	{"me": "Hmm what's this?"},
 	{"chat": "Hi"}, 
 	{"minigame": "game"},
-	#{"chat": "I did it i solved mg!"},
+	{"chat": "I did it i solved mg!"},
 	#{"a": "bruuuuuuuuuuuuuuuuuuuuh"},
 	#{"b": "zaaaaaaaa"},
 	#{"userChoice": ["yes", "no"]},
-	#{"RESET": ""},
+	{"RESET": ""},
 	#{"user1": "Well yes/no."},
-	#{"minigame": "game"},
-	#{"chat": "I did it i solved mg222222!"},
-	#{"bruh": "bye"},
+	{"minigame": "game"},
+	{"chat": "I did it i solved mg222222!"},
+	{"bruh": "bye"},
 	{"ending": ""}
 ]
 
