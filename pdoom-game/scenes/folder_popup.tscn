@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://d0d712jm1iqtq" path="res://scripts/file_popup.gd" id="1_ewifn"]
 [ext_resource type="PackedScene" uid="uid://buph0h50ickkm" path="res://scenes/file.tscn" id="2_br8jv"]
+[ext_resource type="FontFile" uid="uid://yqcxdm52tkin" path="res://assets/FragmentMono-Regular.ttf" id="3_e67m2"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_w2pfo"]
 size = Vector2(518, 422)
@@ -57,6 +58,7 @@ offset_left = -8.0
 offset_bottom = 8.0
 grow_horizontal = 0
 mouse_filter = 1
+theme_override_fonts/font = ExtResource("3_e67m2")
 text = "CLOSE"
 
 [node name="FolderPopupArea2D" type="Area2D" parent="." unique_id=1721672639]

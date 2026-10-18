@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://d0d712jm1iqtq" path="res://scripts/file_popup.gd" id="1_8ciud"]
 [ext_resource type="Texture2D" uid="uid://uvkpmo31fiv4" path="res://assets/images/window.png" id="1_4647o"]
+[ext_resource type="FontFile" uid="uid://yqcxdm52tkin" path="res://assets/FragmentMono-Regular.ttf" id="3_ihb21"]
 
 [node name="FilePopup" type="TextureRect" unique_id=1509778168 groups=["filePopup"]]
 self_modulate = Color(0, 0, 0, 1)
@@ -26,10 +27,11 @@ anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
 offset_left = -113.5
-offset_top = 38.5
+offset_top = 36.5
 offset_right = -55.5
-offset_bottom = 69.5
+offset_bottom = 67.5
 grow_horizontal = 0
+theme_override_fonts/font = ExtResource("3_ihb21")
 text = "CLOSE"
 
 [node name="ColorRect" type="ColorRect" parent="." unique_id=2071032087]
@@ -56,7 +58,7 @@ anchor_bottom = 0.5
 offset_left = -250.0
 offset_top = -200.0
 offset_right = 250.0
-offset_bottom = 200.0
+offset_bottom = 254.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/margin_left = 50
@@ -71,9 +73,10 @@ layout_mode = 2
 
 [node name="Label" type="RichTextLabel" parent="Container/VBoxContainer" unique_id=1077879420]
 unique_name_in_owner = true
-custom_minimum_size = Vector2(500, 250)
-custom_maximum_size = Vector2(500, 250)
+custom_minimum_size = Vector2(500, 280)
+custom_maximum_size = Vector2(500, 280)
 layout_mode = 2
+theme_override_fonts/normal_font = ExtResource("3_ihb21")
 text = "Asdfghjkl;
 saskjsaklsj
 sjsajlasj
@@ -110,6 +113,7 @@ layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 mouse_filter = 1
+theme_override_fonts/font = ExtResource("3_ihb21")
 text = "Option 1"
 
 [node name="Button2" type="Button" parent="Container/VBoxContainer/Buttons" unique_id=2103390797]
@@ -120,6 +124,7 @@ layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 mouse_filter = 1
+theme_override_fonts/font = ExtResource("3_ihb21")
 text = "Option 1"
 
 [connection signal="pressed" from="Button" to="." method="_on_popup_close_button_pressed"]

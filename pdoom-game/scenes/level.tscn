@@ -9,6 +9,7 @@
 [ext_resource type="Resource" uid="uid://bpb5tktt406iy" path="res://assets/resources/question_file.tres" id="5_2r41h"]
 [ext_resource type="Resource" uid="uid://b08gbblenyybb" path="res://assets/resources/instructions_file.tres" id="7_klq6b"]
 [ext_resource type="PackedScene" uid="uid://4jfd0g7hhdvg" path="res://scenes/grid_game.tscn" id="9_8c41q"]
+[ext_resource type="Texture2D" uid="uid://dtie50n3p1j1y" path="res://assets/images/hack.png" id="10_olg7q"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_w2pfo"]
 size = Vector2(526, 505.00006)
@@ -50,6 +51,10 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_left = 10.0
+offset_top = 6.0
+offset_right = 10.0
+offset_bottom = 6.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
@@ -85,27 +90,47 @@ scale = Vector2(0.99999994, 0.99999994)
 shape = SubResource("RectangleShape2D_w2pfo")
 
 [node name="INST" parent="." unique_id=963720069 instance=ExtResource("2_w7c3h")]
-offset_left = 174.0
-offset_top = 87.0
-offset_right = 274.0
-offset_bottom = 187.0
+offset_left = 922.0
+offset_top = 373.0
+offset_right = 1022.0
+offset_bottom = 473.0
 fileContent = ExtResource("7_klq6b")
 fileRef = "Instructions.txt"
 
 [node name="Q" parent="." unique_id=97602639 instance=ExtResource("2_w7c3h")]
-offset_left = 289.0
-offset_top = 87.0
-offset_right = 389.0
-offset_bottom = 187.0
+offset_left = 918.0
+offset_top = 233.0
+offset_right = 1018.0
+offset_bottom = 333.0
 fileContent = ExtResource("5_2r41h")
 fileRef = "Question.txt"
 
 [node name="Minigame" type="CanvasLayer" parent="." unique_id=1733824141]
 
-[node name="GridGameNode2D" parent="Minigame" unique_id=75310135 groups=["gridGame"] instance=ExtResource("9_8c41q")]
+[node name="GridGame1" parent="Minigame" unique_id=75310135 groups=["gridGame"] instance=ExtResource("9_8c41q")]
 process_mode = 4
 visible = false
 position = Vector2(0, -20)
 
+[node name="GridGame2" parent="Minigame" unique_id=1333074519 groups=["gridGame"] instance=ExtResource("9_8c41q")]
+process_mode = 4
+visible = false
+position = Vector2(0, -20)
+
+[node name="BoardTileMapLayer" parent="Minigame/GridGame2/GridNode2D" parent_id_path=PackedInt32Array(1333074519, 1389949637) index="0" unique_id=1843460464]
+visible = false
+
+[node name="Hack" type="TextureButton" parent="." unique_id=86627380 groups=["hackExe"]]
+visible = false
+offset_left = 767.0
+offset_top = 572.0
+offset_right = 2367.0
+offset_bottom = 2172.0
+scale = Vector2(0.08, 0.08)
+texture_normal = ExtResource("10_olg7q")
+
 [connection signal="area_entered" from="DesktopUIControl/FileContainer/Folder/Area2D" to="DesktopUIControl/FileContainer/Folder" method="_on_folder_area_entered"]
 [connection signal="area_exited" from="DesktopUIControl/FileContainer/Folder/Area2D" to="DesktopUIControl/FileContainer/Folder" method="_on_folder_area_exited"]
+[connection signal="pressed" from="Hack" to="." method="_on_hack_pressed"]
+
+[editable path="Minigame/GridGame2"]

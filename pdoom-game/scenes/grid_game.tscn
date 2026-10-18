@@ -4,6 +4,7 @@
 [ext_resource type="TileSet" uid="uid://brof4oim6854j" path="res://scenes/tile_set.tres" id="1_whmy2"]
 [ext_resource type="Script" uid="uid://df8ywg0ei4e7x" path="res://scripts/PipeGame/PipeOverlay.gd" id="3_4o2su"]
 [ext_resource type="Script" uid="uid://bd2e14fpwhdaj" path="res://scripts/PipeGame/PipeHud.gd" id="4_3ekdo"]
+[ext_resource type="FontFile" uid="uid://yqcxdm52tkin" path="res://assets/FragmentMono-Regular.ttf" id="5_4o2su"]
 
 [node name="GridGameNode2D" type="Node2D" unique_id=75310135]
 z_index = -5
@@ -37,12 +38,16 @@ size_flags_vertical = 0
 
 [node name="MovesLabel" type="Label" parent="HUDCanvasLayer/MarginContainer/HBoxContainer" unique_id=1296233419]
 layout_mode = 2
+theme_override_fonts/font = ExtResource("5_4o2su")
 
 [node name="UndoButton" type="Button" parent="HUDCanvasLayer/MarginContainer/HBoxContainer" unique_id=94169762]
 layout_mode = 2
+theme_override_fonts/font = ExtResource("5_4o2su")
 
 [node name="ResetButton" type="Button" parent="HUDCanvasLayer/MarginContainer/HBoxContainer" unique_id=1085548662]
 layout_mode = 2
+theme_override_fonts/font = ExtResource("5_4o2su")
 
 [node name="StatusLabel" type="Label" parent="HUDCanvasLayer/MarginContainer/HBoxContainer" unique_id=1438012217]
 layout_mode = 2
+theme_override_fonts/font = ExtResource("5_4o2su")

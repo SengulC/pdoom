@@ -142,7 +142,7 @@ func _get_cur_time() -> String:
 
 var mg_started := false
 func setup_minigame():
-	var mg :PipeGame= get_tree().get_first_node_in_group("gridGame")
+	var mg :PipeGame = get_tree().get_first_node_in_group("gridGame")
 	mg_started = true
 	mg.process_mode = Node.PROCESS_MODE_ALWAYS
 	mg.visible = true
@@ -153,6 +153,7 @@ func unsetup_minigame():
 	mg.process_mode = Node.PROCESS_MODE_DISABLED
 	mg.visible = false
 	mg.deactivate_hud()
+	mg.queue_free()
 
 func begin_phase() -> void:
 	for idx in Phases.phase01.size():
@@ -171,9 +172,13 @@ func begin_phase() -> void:
 				
 			if speaker == "minigame":
 				print('minigame time')
-				setup_minigame()
+				# set hacker exe as visible which pressing, setsupminigame
+				var hackBtn := get_tree().get_first_node_in_group("hackExe")
+				hackBtn.visible = true
+				print("set hackbtn visible awaiting")
 				await Globalz.mg_won
 				unsetup_minigame()
+				hackBtn.visible = false
 				continue
 			
 			## user choice presented, must wait until they make their choice!
@@ -206,7 +211,7 @@ func begin_phase() -> void:
 			
 			# send signal out for actually changing budget after text has been sent/received
 			Globalz.budget_reduced.emit(Globalz.currBudget)
-			print("sent out signal")
+			#print("sent out signal")
 
 const RESTART_DELAY = 5.0
 func system_reset():

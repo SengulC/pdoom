@@ -2,6 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://xllk48fsm4sh" path="res://assets/images/file.png" id="1_g4uxh"]
 [ext_resource type="Script" uid="uid://y7hyxaensj5j" path="res://scripts/file.gd" id="2_wr4vy"]
+[ext_resource type="FontFile" uid="uid://yqcxdm52tkin" path="res://assets/FragmentMono-Regular.ttf" id="3_wr4vy"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_w2pfo"]
 size = Vector2(420, 293.28888)
@@ -38,5 +39,6 @@ grow_horizontal = 2
 grow_vertical = 0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_colors/font_shadow_color = Color(0.7490196, 0.7490196, 0.7490196, 0.21176471)
+theme_override_fonts/font = ExtResource("3_wr4vy")
 text = "File.txt"
 horizontal_alignment = 1

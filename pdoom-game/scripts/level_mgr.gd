@@ -17,3 +17,6 @@ func _ready() -> void:
 	chatFile.visible = true
 	folder.visible = true
 	Globalz.begin_phase()
+
+func _on_hack_pressed() -> void:
+	Globalz.setup_minigame()

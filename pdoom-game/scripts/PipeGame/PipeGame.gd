@@ -194,6 +194,7 @@ func _update_win() -> void:
 	if now_won and not won:
 		level_won.emit()
 		Globalz.mg_won.emit()
+		print("u won game!!!!!!!")
 	won = now_won
 
 func _refresh_hud() -> void:
