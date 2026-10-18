@@ -155,6 +155,7 @@ func unsetup_minigame():
 	mg.deactivate_hud()
 	mg.queue_free()
 
+const ENDING = preload("uid://ckepih1bi7nk3")
 func begin_phase() -> void:
 	AudioManager.play_os("notif")
 	for idx in Phases.phase01.size():
@@ -170,7 +171,10 @@ func begin_phase() -> void:
 			if speaker == "RESET":
 				system_reset()
 				continue
-				
+			
+			if speaker == "ending":
+				get_tree().change_scene_to_packed(ENDING)
+			
 			if speaker == "minigame":
 				print('minigame time')
 				# set hacker exe as visible which pressing, setsupminigame

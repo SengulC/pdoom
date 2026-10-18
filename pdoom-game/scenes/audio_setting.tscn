@@ -1,0 +1,55 @@
+[gd_scene format=3 uid="uid://bv6em6m3yv1bf"]
+
+[ext_resource type="FontFile" uid="uid://yqcxdm52tkin" path="res://assets/FragmentMono-Regular.ttf" id="1_4s7t0"]
+[ext_resource type="Script" uid="uid://duxoo4jd6necw" path="res://scripts/audio_setting.gd" id="1_74hci"]
+
+[node name="ColorRect" type="ColorRect" unique_id=2136658019]
+process_mode = 3
+z_index = 1000
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -100.0
+offset_top = -100.0
+offset_right = 100.0
+offset_bottom = 100.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+color = Color(0, 0, 0, 1)
+script = ExtResource("1_74hci")
+
+[node name="Label" type="Label" parent="." unique_id=1299034085]
+process_mode = 3
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -69.0
+offset_top = 23.0
+offset_right = 70.0
+offset_bottom = 46.0
+grow_horizontal = 2
+mouse_filter = 1
+theme_override_fonts/font = ExtResource("1_4s7t0")
+text = "Main Volume"
+horizontal_alignment = 1
+
+[node name="HSlider" type="HSlider" parent="." unique_id=1684331719]
+custom_minimum_size = Vector2(100, 100)
+custom_maximum_size = Vector2(100, 100)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -4.0
+offset_top = -8.0
+offset_right = 4.0
+offset_bottom = 8.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2

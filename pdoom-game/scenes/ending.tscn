@@ -1,0 +1,41 @@
+[gd_scene format=3 uid="uid://ckepih1bi7nk3"]
+
+[ext_resource type="Script" uid="uid://cdr3vo3uvgmpe" path="res://scripts/ending.gd" id="1_fyrdv"]
+[ext_resource type="Texture2D" uid="uid://cxtpvityy16ta" path="res://assets/images/newspaper.jpg" id="1_mqjok"]
+
+[node name="Ending" type="Node2D" unique_id=62073334]
+script = ExtResource("1_fyrdv")
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=658873980]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = 1080.0
+offset_bottom = 720.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Newspaper" type="TextureRect" parent="ColorRect" unique_id=1016895531]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -276.0
+offset_top = -293.0
+offset_right = 94.0
+offset_bottom = 83.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("1_mqjok")
+
+[node name="ColorRect2" type="ColorRect" parent="ColorRect" unique_id=776109233]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)

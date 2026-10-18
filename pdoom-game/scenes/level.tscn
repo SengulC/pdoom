@@ -36,7 +36,7 @@ visible = false
 layout_mode = 0
 offset_right = 1080.0
 offset_bottom = 720.0
-mouse_filter = 2
+mouse_filter = 1
 color = Color(0.26050612, 0.26050615, 0.26050612, 1)
 
 [node name="TextureRect" type="TextureRect" parent="DesktopUIControl" unique_id=837392315]
@@ -57,7 +57,7 @@ offset_right = 10.0
 offset_bottom = 6.0
 grow_horizontal = 2
 grow_vertical = 2
-mouse_filter = 2
+mouse_filter = 1
 
 [node name="ChatFile" parent="DesktopUIControl/FileContainer" unique_id=1167000874 groups=["chatFile"] instance=ExtResource("2_w7c3h")]
 visible = false
@@ -66,6 +66,7 @@ offset_left = 151.99998
 offset_top = 260.0
 offset_right = 664.0
 offset_bottom = 772.0
+mouse_filter = 1
 fileContent = ExtResource("4_b121j")
 fileRef = "chat.txt"
 
@@ -78,7 +79,6 @@ offset_right = 1201.0
 offset_bottom = 1090.0
 scale = Vector2(0.2, 0.2)
 pivot_offset_ratio = Vector2(0.5, 0)
-mouse_filter = 2
 texture = ExtResource("2_w8frs")
 script = ExtResource("3_mx8sn")
 
@@ -94,6 +94,7 @@ offset_left = 922.0
 offset_top = 373.0
 offset_right = 1022.0
 offset_bottom = 473.0
+mouse_filter = 1
 fileContent = ExtResource("7_klq6b")
 fileRef = "Instructions.txt"
 
@@ -102,6 +103,7 @@ offset_left = 918.0
 offset_top = 233.0
 offset_right = 1018.0
 offset_bottom = 333.0
+mouse_filter = 1
 fileContent = ExtResource("5_2r41h")
 fileRef = "Question.txt"
 
