@@ -19,6 +19,7 @@ config/icon="res://icon.svg"
 
 Globalz="*uid://pjoc06lvwr0g"
 Phases="*uid://dwyd2k7c845gj"
+Overlay="*uid://fulc2aprxtig"
 
 [display]
 

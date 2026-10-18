@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://dsgejvhabk7xe"]
 
 [ext_resource type="Script" uid="uid://deipbm2auqvy0" path="res://scripts/level_mgr.gd" id="1_w7c3h"]
+[ext_resource type="Texture2D" uid="uid://c225ot5mr1704" path="res://assets/images/DesktopWallpaper.png" id="2_2r41h"]
 [ext_resource type="PackedScene" uid="uid://buph0h50ickkm" path="res://scenes/file.tscn" id="2_w7c3h"]
 [ext_resource type="Texture2D" uid="uid://55pahtw0s5c8" path="res://assets/images/open-folder.png" id="2_w8frs"]
 [ext_resource type="Script" uid="uid://ck4d565uyrfwx" path="res://scripts/folder.gd" id="3_mx8sn"]
@@ -27,6 +28,7 @@ size_flags_vertical = 4
 mouse_filter = 1
 
 [node name="ColorRectBG" type="ColorRect" parent="DesktopUIControl" unique_id=824963458]
+visible = false
 layout_mode = 0
 offset_right = 1080.0
 offset_bottom = 720.0
@@ -34,10 +36,11 @@ mouse_filter = 2
 color = Color(0.26050612, 0.26050615, 0.26050612, 1)
 
 [node name="TextureRect" type="TextureRect" parent="DesktopUIControl" unique_id=837392315]
-visible = false
 layout_mode = 0
 offset_right = 1080.0
 offset_bottom = 720.0
+scale = Vector2(0.685, 0.685)
+texture = ExtResource("2_2r41h")
 
 [node name="FileContainer" type="Control" parent="DesktopUIControl" unique_id=2078322934]
 layout_mode = 1
