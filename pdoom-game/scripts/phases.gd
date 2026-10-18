@@ -6,6 +6,7 @@ extends Node
 	{"chat": "Hey skjahkhsakj"},
 	#{"a": "bruuuuuuuuuuuuuuuuuuuuh"},
 	#{"b": "zaaaaaaaa"},
+	#{"minigame": "game"},
 	{"userChoice": ["yes", "no"]},
 	{"user1": "Well yes/no."},
 	{"chat": "Ah ok"}, 
