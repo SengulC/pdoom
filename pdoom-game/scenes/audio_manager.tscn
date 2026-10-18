@@ -15,8 +15,8 @@ fx = Dictionary[String, AudioStream]({
 "click": ExtResource("3_m6ggh"),
 "notif": ExtResource("2_3asnw")
 })
-ambi_vol = -30.0
-music_vol = -45.0
+ambi_vol = -15.0
+music_vol = -35.0
 ambiences = Dictionary[String, AudioStream]({
 "ambient": ExtResource("4_njtn3")
 })

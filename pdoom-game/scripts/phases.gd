@@ -3,14 +3,14 @@ extends Node
 @export var phase01 := [
 	{"me": "Hmm what's this?"},
 	{"chat": "Hi"}, 
-	{"minigame": "game"},
+	{"minigame": "0"},
 	{"chat": "I did it i solved mg!"},
 	#{"a": "bruuuuuuuuuuuuuuuuuuuuh"},
 	#{"b": "zaaaaaaaa"},
 	#{"userChoice": ["yes", "no"]},
 	{"RESET": ""},
 	#{"user1": "Well yes/no."},
-	{"minigame": "game"},
+	{"minigame": "1"},
 	{"chat": "I did it i solved mg222222!"},
 	{"bruh": "bye"},
 	{"ending": ""}

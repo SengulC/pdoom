@@ -111,5 +111,5 @@ func play_os(os_name: String, from: float = 0.0) -> void:
 		print("fx key not found: " + os_name)
 		return
 	active_os.stream = fx[os_name]
-	active_os.volume_db = -20.0
+	active_os.volume_db = -40.0
 	active_os.play(from)

@@ -202,7 +202,7 @@ func _update_win() -> void:
 	var now_won := _is_connected()
 	if now_won and not won:
 		level_won.emit()
-		Globalz.mg_won.emit()
+		Globalz.mg_won.emit(level_id)
 		print("u won game!!!!!!!")
 	won = now_won
 

@@ -19,7 +19,7 @@ signal popup_opened
 signal budget_reduced(amount: int)
 signal inner_dialog(words: String)
 signal choice_resolved(index: int)   # -1 = popup closed without a choice
-signal mg_won()
+signal mg_won(level_id: int)
 
 func _ready() -> void:
 	overlay = get_tree().get_first_node_in_group("overlay")
@@ -139,20 +139,33 @@ func _get_cur_time() -> String:
 	return "%s:%s:%s" %[Time.get_time_dict_from_system().hour, Time.get_time_dict_from_system().minute, Time.get_time_dict_from_system().second];
 
 var mg_started := false
-func setup_minigame():
-	var mg :PipeGame = get_tree().get_first_node_in_group("gridGame")
+func _get_minigame(level_id: int) -> PipeGame:
+	for mg: PipeGame in get_tree().get_nodes_in_group("gridGame"):
+		if is_instance_valid(mg) and mg.level_id == level_id:
+			return mg
+	return null
+
+var current_mg_level := 0
+func setup_minigame() -> void:
+	var mg := _get_minigame(current_mg_level)
+	if mg == null:
+		push_warning("No minigame with level_id %d" % current_mg_level)
+		return
 	mg_started = true
-	mg.reset_moves()
 	mg.process_mode = Node.PROCESS_MODE_ALWAYS
 	mg.visible = true
+	mg.reset_moves()
 	mg.activate_hud()
-	
-func unsetup_minigame():
-	var mg :PipeGame= get_tree().get_first_node_in_group("gridGame")	
+
+func unsetup_minigame(level_id: int) -> void:
+	var mg := _get_minigame(level_id)
+	if mg == null:
+		return
 	mg.process_mode = Node.PROCESS_MODE_DISABLED
 	mg.visible = false
 	mg.deactivate_hud()
 	mg.queue_free()
+	mg_started = false
 
 const ENDING = preload("uid://ckepih1bi7nk3")
 func begin_phase() -> void:
@@ -176,14 +189,18 @@ func begin_phase() -> void:
 				return
 			
 			if speaker == "minigame":
-				print('minigame time')
-				# set hacker exe as visible which pressing, setsupminigame
+				var lvl := int(line)
+				current_mg_level = lvl
 				var hackBtn := get_tree().get_first_node_in_group("hackExe")
 				hackBtn.visible = true
 				AudioManager.play_os("notif")
-				print("set hackbtn visible awaiting")
-				await Globalz.mg_won
-				unsetup_minigame()
+
+				# keep waiting until the level we asked for is won
+				var won_id := -1
+				while won_id != lvl:
+					won_id = await Globalz.mg_won
+
+				unsetup_minigame(lvl)
 				hackBtn.visible = false
 				continue
 			
