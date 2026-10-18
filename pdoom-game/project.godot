@@ -13,7 +13,8 @@ config_version=5
 config/name="pdoom_game"
 run/main_scene="uid://dsgejvhabk7xe"
 config/features=PackedStringArray("4.7", "GL Compatibility")
-config/icon="res://icon.svg"
+boot_splash/image="uid://726vu1mtm8qy"
+config/icon="uid://726vu1mtm8qy"
 
 [autoload]
 
