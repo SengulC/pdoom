@@ -5,7 +5,9 @@
 [ext_resource type="PackedScene" uid="uid://buph0h50ickkm" path="res://scenes/file.tscn" id="2_w7c3h"]
 [ext_resource type="Texture2D" uid="uid://55pahtw0s5c8" path="res://assets/images/open-folder.png" id="2_w8frs"]
 [ext_resource type="Script" uid="uid://ck4d565uyrfwx" path="res://scripts/folder.gd" id="3_mx8sn"]
+[ext_resource type="Resource" uid="uid://wit0jdty1iix" path="res://assets/resources/chat_file.tres" id="4_b121j"]
 [ext_resource type="Resource" uid="uid://bpb5tktt406iy" path="res://assets/resources/test_file.tres" id="5_2r41h"]
+[ext_resource type="Resource" uid="uid://b08gbblenyybb" path="res://assets/resources/test_file2.tres" id="7_klq6b"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_w2pfo"]
 size = Vector2(526, 505.00006)
@@ -52,12 +54,13 @@ grow_vertical = 2
 mouse_filter = 2
 
 [node name="ChatFile" parent="DesktopUIControl/FileContainer" unique_id=1167000874 groups=["chatFile"] instance=ExtResource("2_w7c3h")]
+visible = false
 layout_mode = 0
 offset_left = 151.99998
 offset_top = 260.0
 offset_right = 664.0
 offset_bottom = 772.0
-fileContent = ExtResource("5_2r41h")
+fileContent = ExtResource("4_b121j")
 fileRef = "chat"
 
 [node name="Folder" type="TextureRect" parent="DesktopUIControl/FileContainer" unique_id=1177806281]
@@ -78,6 +81,22 @@ script = ExtResource("3_mx8sn")
 position = Vector2(252.99976, 242.50006)
 scale = Vector2(0.99999994, 0.99999994)
 shape = SubResource("RectangleShape2D_w2pfo")
+
+[node name="File" parent="." unique_id=963720069 instance=ExtResource("2_w7c3h")]
+offset_left = 174.0
+offset_top = 87.0
+offset_right = 274.0
+offset_bottom = 187.0
+fileContent = ExtResource("7_klq6b")
+fileRef = "TEST"
+
+[node name="File2" parent="." unique_id=97602639 instance=ExtResource("2_w7c3h")]
+offset_left = 862.0
+offset_top = 94.0
+offset_right = 962.0
+offset_bottom = 194.0
+fileContent = ExtResource("5_2r41h")
+fileRef = "TEST2"
 
 [connection signal="area_entered" from="DesktopUIControl/FileContainer/Folder/Area2D" to="DesktopUIControl/FileContainer/Folder" method="_on_folder_area_entered"]
 [connection signal="area_exited" from="DesktopUIControl/FileContainer/Folder/Area2D" to="DesktopUIControl/FileContainer/Folder" method="_on_folder_area_exited"]

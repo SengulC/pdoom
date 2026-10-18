@@ -2,6 +2,7 @@ extends Node2D
 
 const SECS_PER_CHAR := 0.05
 const MIN_DELAY := 0.5
+const START_DELAY := 2.5
 
 var chatFile: File
 var chatContent: FileContent
@@ -9,6 +10,10 @@ var chatContent: FileContent
 func _ready() -> void:
 	chatFile = get_tree().get_first_node_in_group("chatFile")
 	chatContent = chatFile.fileContent  # survives file/popup nodes being freed..
+	
+	# wait for user/player to read instructions etc files then activate chatFile
+	await get_tree().create_timer(START_DELAY).timeout
+	chatFile.visible = true
 	begin_phase_01()
 
 func _get_cur_time() -> String:
@@ -22,8 +27,11 @@ func begin_phase_01() -> void:
 			
 			# make budget red. calc for current line
 			var budgetReduction = Phases.phase01_budget_decr[idx]
-			Globalz.currBudget -= budgetReduction
-			#print("we are on idx %s therefore reducing budget results in %s" %[idx, Globalz.currBudget])
+			Globalz.currBudget += budgetReduction
+			
+			## RESET, terminate current chat, call reset on files NOT in folder
+			#if speaker == "RESET":
+				#print("must reset")
 			
 			## user choice presented, must wait until they make their choice!
 			if speaker == "userChoice":

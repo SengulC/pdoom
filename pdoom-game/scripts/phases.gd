@@ -4,8 +4,9 @@ extends Node
 	{"me": "Hmm what's this?"},
 	{"chat": "Hi"}, 
 	{"chat": "Hey skjahkhsakj"},
-	#{"a": "bruuuuuuuuuuuuuuuuuuuuh"},
-	#{"b": "zaaaaaaaa"},
+	{"RESET": ""},
+	{"a": "bruuuuuuuuuuuuuuuuuuuuh"},
+	{"b": "zaaaaaaaa"},
 	#{"minigame": "game"},
 	{"userChoice": ["yes", "no"]},
 	{"user1": "Well yes/no."},
@@ -14,10 +15,16 @@ extends Node
 ]
 
 @export var phase01_budget_decr := [
-	10,
-	10,
-	100,
-	50,
-	10,
-	10, 10
+	-100,
+	-100,
+	-10, 
+	1000,
+	-19, 
+	-10,
+	-50,
+	-10,
+	-10,
+	-50,
+	-10,
+	-10
 ]

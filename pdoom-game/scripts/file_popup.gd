@@ -5,12 +5,13 @@ extends ColorRect
 
 func _ready() -> void:
 	# make userChoiceBtns container and array ref.s ready for access
-	if not folder:
+	if not folder and fileRef == "chat":
 		Globalz.userChoiceBtnsContainer = find_child("Buttons", true, false)
 		Globalz.userChoiceBtns = Globalz.userChoiceBtnsContainer.get_children()
 		for i in Globalz.userChoiceBtns.size():
 			Globalz.userChoiceBtns[i].pressed.connect(func(): Globalz.choice_resolved.emit(i))
 		Globalz.popup_opened.emit()
+	position += Vector2(randf_range(-50, 50), randf_range(-50, 50)) # slightly randomized filepopup
 
 func _exit_tree() -> void:
 	if not folder: Globalz.choice_resolved.emit(-1)
