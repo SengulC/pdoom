@@ -11,6 +11,12 @@ signal level_won
 @onready var overlay = $GridNode2D/GridOverlayNode2D
 @onready var hud = $HUDCanvasLayer
 
+@export var margin := 40.0       # empty space around the grid
+@export var hud_height := 80.0   # space reserved at the top for the HUD
+@export var max_scale := 5.0     # don't blow tiny levels up too far
+
+@onready var grid_node: Node2D = $GridNode2D
+
 const SIDES := {
 	Vector2i.RIGHT: TileSet.CELL_NEIGHBOR_RIGHT_SIDE,
 	Vector2i.DOWN: TileSet.CELL_NEIGHBOR_BOTTOM_SIDE,
@@ -27,11 +33,35 @@ var moves_left: int:
 
 var original := {}   # cell -> [source_id, atlas_coords, alternative]
 
+func _fit_grid() -> void:
+	var used := board.get_used_rect()
+	if used.size == Vector2i.ZERO:
+		return
+	# include the off-board endpoint tiles
+	for c in endpoints:
+		used = used.expand(c).expand(c + Vector2i.ONE)
+
+	var tile := Vector2(board.tile_set.tile_size)
+	var grid_size := Vector2(used.size) * tile
+	var grid_origin := Vector2(used.position) * tile
+
+	var top_left := Vector2(margin, margin + hud_height)
+	var avail := get_viewport_rect().size - top_left - Vector2(margin, margin)
+
+	var s := minf(avail.x / grid_size.x, avail.y / grid_size.y)
+	s = minf(s, max_scale)
+
+	grid_node.scale = Vector2(s, s)
+	# centre inside the available area
+	grid_node.position = top_left + (avail - grid_size * s) / 2.0 - grid_origin * s
+
 func _ready() -> void:
 	_snapshot_level()
 	hud.undo_pressed.connect(undo)
 	hud.reset_pressed.connect(reset)
 	_find_endpoints()
+	_fit_grid()
+	get_viewport().size_changed.connect(_fit_grid)
 	_update_win()
 	_refresh_hud()
 

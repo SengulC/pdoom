@@ -25,11 +25,13 @@ script = ExtResource("3_4o2su")
 script = ExtResource("4_3ekdo")
 
 [node name="MarginContainer" type="MarginContainer" parent="HUDCanvasLayer" unique_id=1840591216]
-offset_right = 40.0
-offset_bottom = 40.0
+offset_right = 30.0
+offset_bottom = 23.0
 
 [node name="HBoxContainer" type="HBoxContainer" parent="HUDCanvasLayer/MarginContainer" unique_id=1192456397]
 layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
 
 [node name="MovesLabel" type="Label" parent="HUDCanvasLayer/MarginContainer/HBoxContainer" unique_id=1296233419]
 layout_mode = 2
