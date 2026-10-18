@@ -22,3 +22,19 @@ z_index = 5
 position = Vector2(51.000015, 51)
 scale = Vector2(0.21369866, 0.3614184)
 shape = SubResource("RectangleShape2D_w2pfo")
+
+[node name="Label" type="Label" parent="." unique_id=149697643]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -26.5
+offset_top = 5.0
+offset_right = 26.5
+offset_bottom = 28.0
+grow_horizontal = 2
+grow_vertical = 0
+text = "File.txt"
+horizontal_alignment = 1

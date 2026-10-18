@@ -5,7 +5,7 @@ extends ColorRect
 
 func _ready() -> void:
 	# make userChoiceBtns container and array ref.s ready for access
-	if not folder and fileRef == "chat":
+	if not folder and fileRef == "chat.txt":
 		Globalz.userChoiceBtnsContainer = find_child("Buttons", true, false)
 		Globalz.userChoiceBtns = Globalz.userChoiceBtnsContainer.get_children()
 		for i in Globalz.userChoiceBtns.size():

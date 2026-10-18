@@ -19,6 +19,7 @@ var press_pos := Vector2.ZERO
 func _ready() -> void:
 	self.connect("mouse_entered", _on_file_mouse_entered)
 	self.connect("mouse_exited", _on_file_mouse_exited)
+	$Label.text = fileRef
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:

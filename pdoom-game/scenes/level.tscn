@@ -61,7 +61,7 @@ offset_top = 260.0
 offset_right = 664.0
 offset_bottom = 772.0
 fileContent = ExtResource("4_b121j")
-fileRef = "chat"
+fileRef = "chat.txt"
 
 [node name="Folder" type="TextureRect" parent="DesktopUIControl/FileContainer" unique_id=1177806281]
 layout_mode = 0
@@ -88,7 +88,7 @@ offset_top = 87.0
 offset_right = 274.0
 offset_bottom = 187.0
 fileContent = ExtResource("7_klq6b")
-fileRef = "TEST"
+fileRef = "Instructions.txt"
 
 [node name="File2" parent="." unique_id=97602639 instance=ExtResource("2_w7c3h")]
 offset_left = 862.0
@@ -96,7 +96,7 @@ offset_top = 94.0
 offset_right = 962.0
 offset_bottom = 194.0
 fileContent = ExtResource("5_2r41h")
-fileRef = "TEST2"
+fileRef = "Question.txt"
 
 [connection signal="area_entered" from="DesktopUIControl/FileContainer/Folder/Area2D" to="DesktopUIControl/FileContainer/Folder" method="_on_folder_area_entered"]
 [connection signal="area_exited" from="DesktopUIControl/FileContainer/Folder/Area2D" to="DesktopUIControl/FileContainer/Folder" method="_on_folder_area_exited"]
