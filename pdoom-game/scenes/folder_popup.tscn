@@ -6,7 +6,7 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_w2pfo"]
 size = Vector2(518, 422)
 
-[node name="FolderPopup" type="ColorRect" unique_id=1449711572 groups=["filePopup", "folderPopup"]]
+[node name="FolderPopup" type="TextureRect" unique_id=192929488 groups=["filePopup", "folderPopup"]]
 z_index = 5
 anchors_preset = 8
 anchor_left = 0.5
@@ -19,10 +19,17 @@ offset_right = 250.0
 offset_bottom = 200.0
 grow_horizontal = 2
 grow_vertical = 2
-mouse_filter = 1
-color = Color(1, 1, 1, 0.1882353)
 script = ExtResource("1_ewifn")
 folder = true
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=518485925]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.23874435, 0.23874438, 0.23874435, 1)
 
 [node name="MarginContainer" type="MarginContainer" parent="." unique_id=273841753]
 layout_mode = 0
@@ -59,5 +66,3 @@ position = Vector2(249, 201)
 shape = SubResource("RectangleShape2D_w2pfo")
 
 [connection signal="pressed" from="Button" to="." method="_on_popup_close_button_pressed"]
-[connection signal="mouse_entered" from="FolderPopupArea2D" to="." method="_on_folder_popup_area_mouse_entered"]
-[connection signal="mouse_exited" from="FolderPopupArea2D" to="." method="_on_folder_popup_area_mouse_exited"]

@@ -6,8 +6,8 @@
 [ext_resource type="Texture2D" uid="uid://55pahtw0s5c8" path="res://assets/images/open-folder.png" id="2_w8frs"]
 [ext_resource type="Script" uid="uid://ck4d565uyrfwx" path="res://scripts/folder.gd" id="3_mx8sn"]
 [ext_resource type="Resource" uid="uid://wit0jdty1iix" path="res://assets/resources/chat_file.tres" id="4_b121j"]
-[ext_resource type="Resource" uid="uid://bpb5tktt406iy" path="res://assets/resources/test_file.tres" id="5_2r41h"]
-[ext_resource type="Resource" uid="uid://b08gbblenyybb" path="res://assets/resources/test_file2.tres" id="7_klq6b"]
+[ext_resource type="Resource" uid="uid://bpb5tktt406iy" path="res://assets/resources/question_file.tres" id="5_2r41h"]
+[ext_resource type="Resource" uid="uid://b08gbblenyybb" path="res://assets/resources/instructions_file.tres" id="7_klq6b"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_w2pfo"]
 size = Vector2(526, 505.00006)
@@ -64,6 +64,7 @@ fileContent = ExtResource("4_b121j")
 fileRef = "chat.txt"
 
 [node name="Folder" type="TextureRect" parent="DesktopUIControl/FileContainer" unique_id=1177806281]
+visible = false
 layout_mode = 0
 offset_left = 689.0
 offset_top = 577.99994
@@ -82,7 +83,7 @@ position = Vector2(252.99976, 242.50006)
 scale = Vector2(0.99999994, 0.99999994)
 shape = SubResource("RectangleShape2D_w2pfo")
 
-[node name="File" parent="." unique_id=963720069 instance=ExtResource("2_w7c3h")]
+[node name="INST" parent="." unique_id=963720069 instance=ExtResource("2_w7c3h")]
 offset_left = 174.0
 offset_top = 87.0
 offset_right = 274.0
@@ -90,11 +91,11 @@ offset_bottom = 187.0
 fileContent = ExtResource("7_klq6b")
 fileRef = "Instructions.txt"
 
-[node name="File2" parent="." unique_id=97602639 instance=ExtResource("2_w7c3h")]
-offset_left = 862.0
-offset_top = 94.0
-offset_right = 962.0
-offset_bottom = 194.0
+[node name="Q" parent="." unique_id=97602639 instance=ExtResource("2_w7c3h")]
+offset_left = 289.0
+offset_top = 87.0
+offset_right = 389.0
+offset_bottom = 187.0
 fileContent = ExtResource("5_2r41h")
 fileRef = "Question.txt"
 

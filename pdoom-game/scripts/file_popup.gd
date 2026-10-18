@@ -1,5 +1,5 @@
 class_name FilePopup
-extends ColorRect
+extends TextureRect
 @export var folder := false
 @export var fileRef : String
 

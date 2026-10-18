@@ -1,9 +1,53 @@
 [gd_scene format=3 uid="uid://j322c0mbxv58"]
 
 [ext_resource type="Script" uid="uid://d0d712jm1iqtq" path="res://scripts/file_popup.gd" id="1_8ciud"]
+[ext_resource type="Texture2D" uid="uid://uvkpmo31fiv4" path="res://assets/images/window.png" id="1_4647o"]
 
-[node name="FilePopup" type="ColorRect" unique_id=1449711572 groups=["filePopup"]]
+[node name="FilePopup" type="TextureRect" unique_id=1509778168 groups=["filePopup"]]
+self_modulate = Color(0, 0, 0, 1)
 z_index = 5
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -270.5
+offset_top = -270.5
+offset_right = 270.5
+offset_bottom = 270.5
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_4647o")
+script = ExtResource("1_8ciud")
+
+[node name="Button" type="Button" parent="." unique_id=1600773996]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -113.5
+offset_top = 38.5
+offset_right = -55.5
+offset_bottom = 69.5
+grow_horizontal = 0
+text = "CLOSE"
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=2071032087]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 58.499992
+offset_top = 67.50001
+offset_right = 181.6825
+offset_bottom = 38.405518
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.6399988, 0.8399988)
+color = Color(0, 0, 0, 1)
+
+[node name="Container" type="MarginContainer" parent="." unique_id=1418792197]
+layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
@@ -13,19 +57,6 @@ offset_left = -250.0
 offset_top = -200.0
 offset_right = 250.0
 offset_bottom = 200.0
-grow_horizontal = 2
-grow_vertical = 2
-mouse_filter = 1
-color = Color(0, 0, 0, 1)
-script = ExtResource("1_8ciud")
-
-[node name="Container" type="MarginContainer" parent="." unique_id=1418792197]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_right = 100.0
-offset_bottom = 100.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/margin_left = 50
@@ -91,16 +122,6 @@ size_flags_vertical = 4
 mouse_filter = 1
 text = "Option 1"
 
-[node name="Button" type="Button" parent="." unique_id=1600773996]
-layout_mode = 1
-anchors_preset = 1
-anchor_left = 1.0
-anchor_right = 1.0
-offset_left = -8.0
-offset_bottom = 8.0
-grow_horizontal = 0
-text = "CLOSE"
-
+[connection signal="pressed" from="Button" to="." method="_on_popup_close_button_pressed"]
 [connection signal="pressed" from="Container/VBoxContainer/Buttons/Button" to="." method="_on_user_choice_button_pressed"]
 [connection signal="pressed" from="Container/VBoxContainer/Buttons/Button2" to="." method="_on_user_choice_button_pressed"]
-[connection signal="pressed" from="Button" to="." method="_on_popup_close_button_pressed"]
