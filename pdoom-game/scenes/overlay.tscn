@@ -1,0 +1,105 @@
+[gd_scene format=3 uid="uid://fulc2aprxtig"]
+
+[ext_resource type="Shader" uid="uid://biqbr2uywh8sf" path="res://scripts/overlay2.gdshader" id="2_r2eog"]
+[ext_resource type="Script" uid="uid://dpf4rc8dmpgg3" path="res://scripts/overlay.gd" id="2_sfd0e"]
+[ext_resource type="Texture2D" uid="uid://uvkpmo31fiv4" path="res://assets/images/window.png" id="3_sfd0e"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_14nai"]
+shader = ExtResource("2_r2eog")
+shader_parameter/darkness = 0.0
+shader_parameter/pixel_size = 1.6230000295925
+shader_parameter/lod_blur = 0.7
+shader_parameter/chroma_offset_px = 0.8
+shader_parameter/saturation = 1.022000048545
+shader_parameter/contrast = 1.026000024985
+shader_parameter/shadow_lift = 0.06
+shader_parameter/scanline_strength = 0.04
+shader_parameter/vignette_strength = 0.3610000171475
+shader_parameter/noise_strength = 0.025
+shader_parameter/noise_speed = 18.0
+shader_parameter/base_jitter_px = 0.08
+shader_parameter/base_jitter_speed = 12.0
+shader_parameter/glitchiness = 0.18
+shader_parameter/glitch_rate = 6.0
+shader_parameter/glitch_shift_px = 1.8
+shader_parameter/glitch_window_min = 0.03
+shader_parameter/glitch_window_max = 0.1
+shader_parameter/blue_band_start_y = 0.45
+shader_parameter/blue_band_speed = 0.06
+shader_parameter/blue_band_width = 0.035
+shader_parameter/blue_band_strength = 0.1
+shader_parameter/blue_band_glitch = 0.25
+shader_parameter/blue_band_distort_px = 1.2
+
+[node name="Overlay" type="ColorRect" unique_id=1085164052 groups=["overlay"]]
+z_index = 100
+material = SubResource("ShaderMaterial_14nai")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("2_sfd0e")
+
+[node name="InnerLabel" type="Label" parent="." unique_id=494897676 groups=["budgetLabel"]]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -99.5
+offset_top = -69.0
+offset_right = 99.5
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 25
+text = "Hmmm..."
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="." unique_id=276731520]
+self_modulate = Color(0, 0, 0, 1)
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -287.0
+offset_top = 15.0
+offset_right = 510.2223
+offset_bottom = 556.0
+grow_horizontal = 0
+scale = Vector2(0.36, 0.165)
+texture = ExtResource("3_sfd0e")
+
+[node name="ColorRect" type="ColorRect" parent="TextureRect" unique_id=306365322]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 83.333496
+offset_top = 78.78787
+offset_right = -86.111206
+offset_bottom = -50.09091
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.05342087, 0.053420886, 0.05342088, 1)
+
+[node name="BudgetLabel" type="Label" parent="." unique_id=253944834 groups=["budgetLabel"]]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 295.0
+offset_top = -334.0
+offset_right = 494.0
+offset_bottom = -265.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0.38464698, 5.8358535e-07, 1.6845763e-07, 1)
+theme_override_font_sizes/font_size = 50
+text = "BUDGET"

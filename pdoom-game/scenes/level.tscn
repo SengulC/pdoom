@@ -1,10 +1,14 @@
 [gd_scene format=3 uid="uid://dsgejvhabk7xe"]
 
 [ext_resource type="Script" uid="uid://deipbm2auqvy0" path="res://scripts/level_mgr.gd" id="1_w7c3h"]
+[ext_resource type="Texture2D" uid="uid://c225ot5mr1704" path="res://assets/images/DesktopWallpaper.png" id="2_2r41h"]
 [ext_resource type="PackedScene" uid="uid://buph0h50ickkm" path="res://scenes/file.tscn" id="2_w7c3h"]
 [ext_resource type="Texture2D" uid="uid://55pahtw0s5c8" path="res://assets/images/open-folder.png" id="2_w8frs"]
 [ext_resource type="Script" uid="uid://ck4d565uyrfwx" path="res://scripts/folder.gd" id="3_mx8sn"]
-[ext_resource type="Texture2D" uid="uid://bpk13ts6ho7lh" path="res://assets/images/1F6AE.svg" id="4_ppgk2"]
+[ext_resource type="Resource" uid="uid://wit0jdty1iix" path="res://assets/resources/chat_file.tres" id="4_b121j"]
+[ext_resource type="Resource" uid="uid://bpb5tktt406iy" path="res://assets/resources/question_file.tres" id="5_2r41h"]
+[ext_resource type="Resource" uid="uid://b08gbblenyybb" path="res://assets/resources/instructions_file.tres" id="7_klq6b"]
+[ext_resource type="PackedScene" uid="uid://4jfd0g7hhdvg" path="res://scenes/grid_game.tscn" id="9_8c41q"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_w2pfo"]
 size = Vector2(526, 505.00006)
@@ -12,7 +16,7 @@ size = Vector2(526, 505.00006)
 [node name="Level" type="Node2D" unique_id=1858162756]
 script = ExtResource("1_w7c3h")
 
-[node name="DesktopUIControl" type="Control" parent="." unique_id=342933659]
+[node name="DesktopUIControl" type="Control" parent="." unique_id=342933659 groups=["desktop"]]
 layout_mode = 3
 anchors_preset = 8
 anchor_left = 0.5
@@ -24,18 +28,22 @@ offset_bottom = 720.0
 grow_horizontal = 2
 grow_vertical = 2
 size_flags_vertical = 4
+mouse_filter = 1
 
 [node name="ColorRectBG" type="ColorRect" parent="DesktopUIControl" unique_id=824963458]
-layout_mode = 0
-offset_right = 1080.0
-offset_bottom = 720.0
-color = Color(0.26050612, 0.26050615, 0.26050612, 1)
-
-[node name="TextureRect" type="TextureRect" parent="DesktopUIControl" unique_id=837392315]
 visible = false
 layout_mode = 0
 offset_right = 1080.0
 offset_bottom = 720.0
+mouse_filter = 2
+color = Color(0.26050612, 0.26050615, 0.26050612, 1)
+
+[node name="TextureRect" type="TextureRect" parent="DesktopUIControl" unique_id=837392315]
+layout_mode = 0
+offset_right = 1080.0
+offset_bottom = 720.0
+scale = Vector2(0.685, 0.685)
+texture = ExtResource("2_2r41h")
 
 [node name="FileContainer" type="Control" parent="DesktopUIControl" unique_id=2078322934]
 layout_mode = 1
@@ -44,15 +52,28 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
+
+[node name="ChatFile" parent="DesktopUIControl/FileContainer" unique_id=1167000874 groups=["chatFile"] instance=ExtResource("2_w7c3h")]
+visible = false
+layout_mode = 0
+offset_left = 151.99998
+offset_top = 260.0
+offset_right = 664.0
+offset_bottom = 772.0
+fileContent = ExtResource("4_b121j")
+fileRef = "chat.txt"
 
 [node name="Folder" type="TextureRect" parent="DesktopUIControl/FileContainer" unique_id=1177806281]
+visible = false
 layout_mode = 0
-offset_left = 302.99997
-offset_top = 201.99998
-offset_right = 815.0
-offset_bottom = 714.0
+offset_left = 689.0
+offset_top = 577.99994
+offset_right = 1201.0
+offset_bottom = 1090.0
 scale = Vector2(0.2, 0.2)
 pivot_offset_ratio = Vector2(0.5, 0)
+mouse_filter = 2
 texture = ExtResource("2_w8frs")
 script = ExtResource("3_mx8sn")
 
@@ -63,50 +84,28 @@ position = Vector2(252.99976, 242.50006)
 scale = Vector2(0.99999994, 0.99999994)
 shape = SubResource("RectangleShape2D_w2pfo")
 
-[node name="TrashBin" type="TextureRect" parent="DesktopUIControl/FileContainer" unique_id=1611954987]
-layout_mode = 0
-offset_left = 74.99998
-offset_top = 177.0
-offset_right = 587.0
-offset_bottom = 689.0
-scale = Vector2(0.2, 0.2)
-pivot_offset_ratio = Vector2(0.5, 0)
-texture = ExtResource("4_ppgk2")
-script = ExtResource("3_mx8sn")
+[node name="INST" parent="." unique_id=963720069 instance=ExtResource("2_w7c3h")]
+offset_left = 174.0
+offset_top = 87.0
+offset_right = 274.0
+offset_bottom = 187.0
+fileContent = ExtResource("7_klq6b")
+fileRef = "Instructions.txt"
 
-[node name="TrashBinArea2D" type="Area2D" parent="DesktopUIControl/FileContainer/TrashBin" unique_id=1060287945]
-position = Vector2(-9, 4.9999237)
+[node name="Q" parent="." unique_id=97602639 instance=ExtResource("2_w7c3h")]
+offset_left = 289.0
+offset_top = 87.0
+offset_right = 389.0
+offset_bottom = 187.0
+fileContent = ExtResource("5_2r41h")
+fileRef = "Question.txt"
 
-[node name="TrashBinCollisionShape2D" type="CollisionShape2D" parent="DesktopUIControl/FileContainer/TrashBin/TrashBinArea2D" unique_id=56144133]
-position = Vector2(252.99976, 242.50006)
-scale = Vector2(0.99999994, 0.99999994)
-shape = SubResource("RectangleShape2D_w2pfo")
+[node name="Minigame" type="CanvasLayer" parent="." unique_id=1733824141]
 
-[node name="File" parent="DesktopUIControl/FileContainer" unique_id=963720069 instance=ExtResource("2_w7c3h")]
-layout_mode = 0
-
-[node name="File2" parent="DesktopUIControl/FileContainer" unique_id=734391997 instance=ExtResource("2_w7c3h")]
-layout_mode = 0
-offset_left = 346.0
-offset_top = 462.0
-offset_right = 858.0
-offset_bottom = 974.0
-
-[node name="File3" parent="DesktopUIControl/FileContainer" unique_id=1051618416 instance=ExtResource("2_w7c3h")]
-layout_mode = 0
-offset_left = 171.0
-offset_top = 386.0
-offset_right = 683.0
-offset_bottom = 898.0
-
-[node name="File4" parent="DesktopUIControl/FileContainer" unique_id=2031189015 instance=ExtResource("2_w7c3h")]
-layout_mode = 0
-offset_left = 642.0
-offset_top = 137.0
-offset_right = 1154.0
-offset_bottom = 649.0
+[node name="GridGameNode2D" parent="Minigame" unique_id=75310135 groups=["gridGame"] instance=ExtResource("9_8c41q")]
+process_mode = 4
+visible = false
+position = Vector2(0, -20)
 
 [connection signal="area_entered" from="DesktopUIControl/FileContainer/Folder/Area2D" to="DesktopUIControl/FileContainer/Folder" method="_on_folder_area_entered"]
 [connection signal="area_exited" from="DesktopUIControl/FileContainer/Folder/Area2D" to="DesktopUIControl/FileContainer/Folder" method="_on_folder_area_exited"]
-[connection signal="area_entered" from="DesktopUIControl/FileContainer/TrashBin/TrashBinArea2D" to="DesktopUIControl/FileContainer/TrashBin" method="_on_folder_area_entered"]
-[connection signal="area_exited" from="DesktopUIControl/FileContainer/TrashBin/TrashBinArea2D" to="DesktopUIControl/FileContainer/TrashBin" method="_on_folder_area_exited"]

@@ -18,6 +18,8 @@ config/icon="res://icon.svg"
 [autoload]
 
 Globalz="*uid://pjoc06lvwr0g"
+Phases="*uid://dwyd2k7c845gj"
+Overlay="*uid://fulc2aprxtig"
 
 [display]
 
@@ -25,6 +27,18 @@ window/size/viewport_width=1080
 window/size/viewport_height=720
 window/stretch/mode="canvas_items"
 window/stretch/aspect="expand"
+
+[global_group]
+
+filePopup=""
+desktop=""
+chatFile=""
+userChoiceBtns=""
+budgetLabel=""
+folderPopup=""
+file=""
+overlay=""
+gridGame=""
 
 [input]
 

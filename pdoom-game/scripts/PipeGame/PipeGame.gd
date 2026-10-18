@@ -1,3 +1,4 @@
+class_name PipeGame
 extends Node2D
 
 signal level_won
@@ -56,6 +57,7 @@ func _fit_grid() -> void:
 	grid_node.position = top_left + (avail - grid_size * s) / 2.0 - grid_origin * s
 
 func _ready() -> void:
+	#Globalz.mg_won.connect(level_won)
 	_snapshot_level()
 	hud.undo_pressed.connect(undo)
 	hud.reset_pressed.connect(reset)
@@ -83,7 +85,16 @@ func _rebuild() -> void:
 	for cell in history:
 		level.set_cells_terrain_connect([cell], terrain_set, terrain_id)
 
+@onready var hud_canvas_layer: CanvasLayer = $HUDCanvasLayer
+
+func activate_hud():
+	hud_canvas_layer.visible = true
+
+func deactivate_hud():
+	hud_canvas_layer.visible = false
+
 func _process(_delta: float) -> void:
+	if visible and Globalz.mg_started: activate_hud()
 	var cell := level.local_to_map(level.get_local_mouse_position())
 	overlay.set_hover(cell, _can_place(cell))
 
@@ -182,6 +193,7 @@ func _update_win() -> void:
 	var now_won := _is_connected()
 	if now_won and not won:
 		level_won.emit()
+		Globalz.mg_won.emit()
 	won = now_won
 
 func _refresh_hud() -> void:

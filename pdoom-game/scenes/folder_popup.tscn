@@ -1,0 +1,68 @@
+[gd_scene format=3 uid="uid://bhrxyglvvdsj4"]
+
+[ext_resource type="Script" uid="uid://d0d712jm1iqtq" path="res://scripts/file_popup.gd" id="1_ewifn"]
+[ext_resource type="PackedScene" uid="uid://buph0h50ickkm" path="res://scenes/file.tscn" id="2_br8jv"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_w2pfo"]
+size = Vector2(518, 422)
+
+[node name="FolderPopup" type="TextureRect" unique_id=192929488 groups=["filePopup", "folderPopup"]]
+z_index = 5
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -250.0
+offset_top = -200.0
+offset_right = 250.0
+offset_bottom = 200.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_ewifn")
+folder = true
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=518485925]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.23874435, 0.23874438, 0.23874435, 1)
+
+[node name="MarginContainer" type="MarginContainer" parent="." unique_id=273841753]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+theme_override_constants/margin_top = 50
+theme_override_constants/margin_bottom = 0
+
+[node name="Container" type="BoxContainer" parent="MarginContainer" unique_id=1954902812]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(500, 400)
+custom_maximum_size = Vector2(500, 400)
+layout_mode = 2
+alignment = 1
+
+[node name="File" parent="MarginContainer/Container" unique_id=963720069 instance=ExtResource("2_br8jv")]
+layout_mode = 2
+
+[node name="Button" type="Button" parent="." unique_id=1600773996]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -8.0
+offset_bottom = 8.0
+grow_horizontal = 0
+mouse_filter = 1
+text = "CLOSE"
+
+[node name="FolderPopupArea2D" type="Area2D" parent="." unique_id=1721672639]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="FolderPopupArea2D" unique_id=451971564]
+position = Vector2(249, 201)
+shape = SubResource("RectangleShape2D_w2pfo")
+
+[connection signal="pressed" from="Button" to="." method="_on_popup_close_button_pressed"]
