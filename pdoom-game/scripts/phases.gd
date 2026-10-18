@@ -1,12 +1,13 @@
 extends Node
 
 @export var phase01 := [
+	{"me": "Hmm what's this?"},
 	{"chat": "Hi"}, 
 	{"chat": "Hey skjahkhsakj"},
 	#{"a": "bruuuuuuuuuuuuuuuuuuuuh"},
 	#{"b": "zaaaaaaaa"},
 	{"userChoice": ["yes", "no"]},
-	{"me": "Well yes/no."},
+	{"user1": "Well yes/no."},
 	{"chat": "Ah ok"}, 
 	{"chat": "Bye!"},
 ]
@@ -17,5 +18,5 @@ extends Node
 	100,
 	50,
 	10,
-	10,
+	10, 10
 ]

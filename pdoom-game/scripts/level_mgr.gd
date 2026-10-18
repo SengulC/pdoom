@@ -23,7 +23,7 @@ func begin_phase_01() -> void:
 			# make budget red. calc for current line
 			var budgetReduction = Phases.phase01_budget_decr[idx]
 			Globalz.currBudget -= budgetReduction
-			print("we are on idx %s therefore reducing budget results in %s" %[idx, Globalz.currBudget])
+			#print("we are on idx %s therefore reducing budget results in %s" %[idx, Globalz.currBudget])
 			
 			## user choice presented, must wait until they make their choice!
 			if speaker == "userChoice":
@@ -42,7 +42,13 @@ func begin_phase_01() -> void:
 					if is_instance_valid(btn):
 						btn.visible = false
 				continue
-			
+				
+			## user narration, must edit inner dialog textbox and keep continue
+			if speaker == "me":
+				print("speaker is me! innerrr")
+				Globalz.inner_dialog.emit(line)
+				continue
+
 			## regular chat prog.
 			chatContent.append("%s: %s - %s\n" % [_get_cur_time(), line, speaker])
 			await get_tree().create_timer(maxf(MIN_DELAY, line.length() * SECS_PER_CHAR)).timeout

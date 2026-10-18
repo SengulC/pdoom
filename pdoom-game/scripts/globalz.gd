@@ -16,6 +16,8 @@ var budgetRef
 signal user_chose(index: int) # for user choice in chat progression
 signal popup_opened
 signal budget_reduced(amount: int)
+signal inner_dialog(words: String)
+#signal hide_inner()
 signal choice_resolved(index: int)   # -1 = popup closed without a choice
 
 func is_choice_ui_ready() -> bool:

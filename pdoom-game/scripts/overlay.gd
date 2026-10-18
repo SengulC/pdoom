@@ -1,10 +1,21 @@
 extends ColorRect
 
 func _ready() -> void:
-	$Label.text = "%s" %Globalz.currBudget
+	$BudgetLabel.text = "%s" %Globalz.currBudget
 	Globalz.budget_reduced.connect(updateBudgetLabel)
-	print("connected signal")
+	Globalz.inner_dialog.connect(updateInnerLabel)
+	#Globalz.hide_inner.connect(hideInnerLabel)
 	
 func updateBudgetLabel(amount: int):
-	print("updating label")
-	$Label.text = "%s" %amount
+	$BudgetLabel.text = "%s" %amount
+
+func updateInnerLabel(words: String):
+	print("in updateInnerLabel")
+	$InnerLabel.visible = true
+	$InnerLabel.text = words
+	await get_tree().create_timer(5.0).timeout
+	hideInnerLabel()
+
+func hideInnerLabel():
+	print("in hideInnerLabel")
+	$InnerLabel.visible = false
