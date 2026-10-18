@@ -156,6 +156,7 @@ func unsetup_minigame():
 	mg.queue_free()
 
 func begin_phase() -> void:
+	AudioManager.play_os("notif")
 	for idx in Phases.phase01.size():
 		var dict: Dictionary = Phases.phase01[idx]
 		for speaker in dict:
@@ -175,6 +176,7 @@ func begin_phase() -> void:
 				# set hacker exe as visible which pressing, setsupminigame
 				var hackBtn := get_tree().get_first_node_in_group("hackExe")
 				hackBtn.visible = true
+				AudioManager.play_os("notif")
 				print("set hackbtn visible awaiting")
 				await Globalz.mg_won
 				unsetup_minigame()

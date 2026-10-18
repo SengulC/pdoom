@@ -21,6 +21,7 @@ config/icon="uid://726vu1mtm8qy"
 Globalz="*uid://pjoc06lvwr0g"
 Phases="*uid://dwyd2k7c845gj"
 Overlay="*uid://fulc2aprxtig"
+AudioManager="*uid://dqb247hkkmxdc"
 
 [display]
 

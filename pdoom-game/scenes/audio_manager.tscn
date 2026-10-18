@@ -1,0 +1,35 @@
+[gd_scene format=3 uid="uid://dqb247hkkmxdc"]
+
+[ext_resource type="Script" uid="uid://3185q0jeahm7" path="res://scripts/audio_manager.gd" id="1_8qd8g"]
+[ext_resource type="AudioStream" uid="uid://bffyn6o8imyxg" path="res://assets/audio/bell.mp3" id="2_3asnw"]
+[ext_resource type="AudioStream" uid="uid://c2cupydontsdi" path="res://assets/audio/click.mp3" id="3_m6ggh"]
+[ext_resource type="AudioStream" uid="uid://coa682dhlxhi5" path="res://assets/audio/intro.mp3" id="4_aoitu"]
+[ext_resource type="AudioStream" uid="uid://ddpcn3txk2eu" path="res://assets/audio/computer_ambient.mp3" id="4_njtn3"]
+[ext_resource type="AudioStream" uid="uid://xv71uouon7la" path="res://assets/audio/ambient_song.mp3" id="5_njtn3"]
+
+[node name="AudioManager" type="Node" unique_id=1881333437 node_paths=PackedStringArray("clips")]
+process_mode = 3
+script = ExtResource("1_8qd8g")
+clips = NodePath("Clips")
+fx = Dictionary[String, AudioStream]({
+"click": ExtResource("3_m6ggh"),
+"notif": ExtResource("2_3asnw")
+})
+ambi_vol = -30.0
+music_vol = -45.0
+ambiences = Dictionary[String, AudioStream]({
+"ambient": ExtResource("4_njtn3")
+})
+music = Dictionary[String, AudioStream]({
+"ambient": ExtResource("5_njtn3"),
+"intro": ExtResource("4_aoitu")
+})
+
+[node name="Clips" type="Node" parent="." unique_id=571957435]
+
+[node name="Ambience" type="AudioStreamPlayer" parent="Clips" unique_id=982820113]
+
+[node name="Music" type="AudioStreamPlayer" parent="Clips" unique_id=498170693]
+
+[node name="OneShotFX" type="AudioStreamPlayer" parent="Clips" unique_id=1126395305]
+volume_db = -15.0
