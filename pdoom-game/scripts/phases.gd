@@ -3,10 +3,10 @@ extends Node
 @export var phase01 := [
 	{"me": "Hmm what's this?"},
 	{"chat": "Hi"}, 
+	{"minigame": "game"},
 	{"chat": "Hey skjahkhsakj"},
 	{"a": "bruuuuuuuuuuuuuuuuuuuuh"},
 	{"b": "zaaaaaaaa"},
-	#{"minigame": "game"},
 	{"userChoice": ["yes", "no"]},
 	{"RESET": ""},
 	{"user1": "Well yes/no."},

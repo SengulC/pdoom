@@ -6,6 +6,7 @@
 [ext_resource type="Script" uid="uid://bd2e14fpwhdaj" path="res://scripts/PipeGame/PipeHud.gd" id="4_3ekdo"]
 
 [node name="GridGameNode2D" type="Node2D" unique_id=75310135]
+z_index = -5
 script = ExtResource("1_mjt4j")
 
 [node name="GridNode2D" type="Node2D" parent="." unique_id=1389949637]
@@ -22,6 +23,7 @@ tile_set = ExtResource("1_whmy2")
 script = ExtResource("3_4o2su")
 
 [node name="HUDCanvasLayer" type="CanvasLayer" parent="." unique_id=670040400]
+visible = false
 script = ExtResource("4_3ekdo")
 
 [node name="MarginContainer" type="MarginContainer" parent="HUDCanvasLayer" unique_id=1840591216]

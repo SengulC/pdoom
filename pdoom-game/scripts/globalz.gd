@@ -19,6 +19,8 @@ signal popup_opened
 signal budget_reduced(amount: int)
 signal inner_dialog(words: String)
 signal choice_resolved(index: int)   # -1 = popup closed without a choice
+signal mg_won()
+
 
 func is_choice_ui_ready() -> bool:
 	return is_instance_valid(userChoiceBtnsContainer) and userChoiceBtnsContainer.is_inside_tree()
@@ -138,6 +140,20 @@ func _ready() -> void:
 func _get_cur_time() -> String:
 	return "%s:%s:%s" %[Time.get_time_dict_from_system().hour, Time.get_time_dict_from_system().minute, Time.get_time_dict_from_system().second];
 
+var mg_started := false
+func setup_minigame():
+	var mg :PipeGame= get_tree().get_first_node_in_group("gridGame")
+	mg_started = true
+	mg.process_mode = Node.PROCESS_MODE_ALWAYS
+	mg.visible = true
+	mg.activate_hud()
+	
+func unsetup_minigame():
+	var mg :PipeGame= get_tree().get_first_node_in_group("gridGame")	
+	mg.process_mode = Node.PROCESS_MODE_DISABLED
+	mg.visible = false
+	mg.deactivate_hud()
+
 func begin_phase() -> void:
 	for idx in Phases.phase01.size():
 		var dict: Dictionary = Phases.phase01[idx]
@@ -151,6 +167,13 @@ func begin_phase() -> void:
 			## RESET, terminate current chat, call reset on files NOT in folder
 			if speaker == "RESET":
 				system_reset()
+				continue
+				
+			if speaker == "minigame":
+				print('minigame time')
+				setup_minigame()
+				await Globalz.mg_won
+				unsetup_minigame()
 				continue
 			
 			## user choice presented, must wait until they make their choice!
