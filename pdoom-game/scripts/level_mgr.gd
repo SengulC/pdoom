@@ -10,9 +10,15 @@ var chatContent: FileContent
 
 func _ready() -> void:
 	AudioManager.play_music("ambient")
-	AudioManager.play_ambience("ambient")
+	AudioManager.change_music("ambient")
+
+	Globalz.overlay.find_child("BudgetLabel").visible = true
+	Globalz.overlay.find_child("TextureRect").visible = true
+
 	chatFile = get_tree().get_first_node_in_group("chatFile")
 	chatContent = chatFile.fileContent  # survives file/popup nodes being freed..
+	Globalz.chatFile = chatFile
+	Globalz.chatContent = chatContent
 	
 	# wait for user/player to read instructions etc files then activate chatFile
 	await get_tree().create_timer(START_DELAY).timeout

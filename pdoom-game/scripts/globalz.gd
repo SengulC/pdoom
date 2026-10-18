@@ -21,7 +21,9 @@ signal inner_dialog(words: String)
 signal choice_resolved(index: int)   # -1 = popup closed without a choice
 signal mg_won()
 
-
+func _ready() -> void:
+	overlay = get_tree().get_first_node_in_group("overlay")
+	
 func is_choice_ui_ready() -> bool:
 	return is_instance_valid(userChoiceBtnsContainer) and userChoiceBtnsContainer.is_inside_tree()
 
@@ -132,10 +134,6 @@ const START_DELAY := 2.5
 var chatFile: File
 var chatContent: FileContent
 var overlay: ColorRect
-func _ready() -> void:
-	chatFile = get_tree().get_first_node_in_group("chatFile")
-	overlay = get_tree().get_first_node_in_group("overlay")
-	chatContent = chatFile.fileContent  # survives file/popup nodes being freed..
 
 func _get_cur_time() -> String:
 	return "%s:%s:%s" %[Time.get_time_dict_from_system().hour, Time.get_time_dict_from_system().minute, Time.get_time_dict_from_system().second];

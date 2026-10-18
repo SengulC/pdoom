@@ -1,0 +1,64 @@
+[gd_scene format=3 uid="uid://bgn0yia8expqg"]
+
+[ext_resource type="Script" uid="uid://cttw7wlsoyol6" path="res://scripts/start.gd" id="1_u80x2"]
+[ext_resource type="FontFile" uid="uid://yqcxdm52tkin" path="res://assets/FragmentMono-Regular.ttf" id="2_u80x2"]
+
+[node name="Start" type="Node2D" unique_id=62073334]
+script = ExtResource("1_u80x2")
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=658873980]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = 1080.0
+offset_bottom = 720.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Button" type="Button" parent="ColorRect" unique_id=228212293]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -100.0
+offset_top = 120.0
+offset_right = 100.0
+offset_bottom = 186.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("2_u80x2")
+theme_override_font_sizes/font_size = 48
+text = "RUN"
+
+[node name="Label" type="Label" parent="ColorRect" unique_id=942952924]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -11.5
+offset_right = 20.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_shadow_color = Color(0, 1, 0, 1)
+theme_override_fonts/font = ExtResource("2_u80x2")
+theme_override_font_sizes/font_size = 100
+text = "P(doom)"
+
+[node name="ColorRect2" type="ColorRect" parent="ColorRect" unique_id=776109233]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0, 0, 0, 1)
+
+[connection signal="pressed" from="ColorRect/Button" to="." method="_on_button_pressed"]
