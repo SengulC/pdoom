@@ -3,6 +3,7 @@ shader_type canvas_item;
 render_mode unshaded;
 
 uniform sampler2D screen_texture : hint_screen_texture, repeat_disable, filter_linear_mipmap;
+uniform float darkness : hint_range(0.0, 1.0) = 0.0;
 
 // overall image
 uniform float pixel_size : hint_range(1.0, 4.0) = 2.0;
@@ -132,4 +133,5 @@ void fragment() {
 	col *= 1.0 - vig * vignette_strength;
 
 	COLOR = vec4(clamp(col, vec3(0.0), vec3(1.0)), 1.0);
+	COLOR.rgb = mix(COLOR.rgb, vec3(0.0), darkness);
 }

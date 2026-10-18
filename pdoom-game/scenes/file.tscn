@@ -6,7 +6,7 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_w2pfo"]
 size = Vector2(420, 293.28888)
 
-[node name="File" type="TextureButton" unique_id=963720069]
+[node name="File" type="TextureButton" unique_id=963720069 groups=["file"]]
 custom_minimum_size = Vector2(100, 100)
 custom_maximum_size = Vector2(100, 100)
 offset_right = 75.0

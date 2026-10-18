@@ -5,6 +5,7 @@
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_14nai"]
 shader = ExtResource("2_r2eog")
+shader_parameter/darkness = 0.0
 shader_parameter/pixel_size = 1.6230000295925
 shader_parameter/lod_blur = 0.7
 shader_parameter/chroma_offset_px = 0.8
@@ -13,11 +14,11 @@ shader_parameter/contrast = 1.026000024985
 shader_parameter/shadow_lift = 0.06
 shader_parameter/scanline_strength = 0.04
 shader_parameter/vignette_strength = 0.3610000171475
-shader_parameter/noise_strength = 0.0490000023275
+shader_parameter/noise_strength = 0.025
 shader_parameter/noise_speed = 18.0
 shader_parameter/base_jitter_px = 0.08
 shader_parameter/base_jitter_speed = 12.0
-shader_parameter/glitchiness = 0.426000020235
+shader_parameter/glitchiness = 0.18
 shader_parameter/glitch_rate = 6.0
 shader_parameter/glitch_shift_px = 1.8
 shader_parameter/glitch_window_min = 0.03
@@ -29,7 +30,7 @@ shader_parameter/blue_band_strength = 0.1
 shader_parameter/blue_band_glitch = 0.25
 shader_parameter/blue_band_distort_px = 1.2
 
-[node name="Overlay" type="ColorRect" unique_id=1085164052]
+[node name="Overlay" type="ColorRect" unique_id=1085164052 groups=["overlay"]]
 z_index = 100
 material = SubResource("ShaderMaterial_14nai")
 anchors_preset = 15

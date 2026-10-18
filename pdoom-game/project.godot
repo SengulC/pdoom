@@ -36,6 +36,8 @@ chatFile=""
 userChoiceBtns=""
 budgetLabel=""
 folderPopup=""
+file=""
+overlay=""
 
 [input]
 
