@@ -9,6 +9,7 @@
 [node name="GridGameNode2D" type="Node2D" unique_id=75310135]
 z_index = -5
 script = ExtResource("1_mjt4j")
+level_id = 1
 
 [node name="GridNode2D" type="Node2D" parent="." unique_id=1389949637]
 

@@ -142,6 +142,7 @@ var mg_started := false
 func setup_minigame():
 	var mg :PipeGame = get_tree().get_first_node_in_group("gridGame")
 	mg_started = true
+	mg.reset_moves()
 	mg.process_mode = Node.PROCESS_MODE_ALWAYS
 	mg.visible = true
 	mg.activate_hud()

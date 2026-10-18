@@ -6,6 +6,7 @@ signal level_won
 @export var max_moves := 7
 @export var terrain_set := 0
 @export var terrain_id := 0
+@export var level_id := 0
 
 @onready var board: TileMapLayer = $GridNode2D/BoardTileMapLayer
 @onready var level: TileMapLayer = $GridNode2D/LevelTileMapLayer
@@ -64,6 +65,14 @@ func _ready() -> void:
 	_find_endpoints()
 	_fit_grid()
 	get_viewport().size_changed.connect(_fit_grid)
+	_update_win()
+	_refresh_hud()
+
+func reset_moves() -> void:
+	max_moves = 3 if level_id == 0 else 7
+	history.clear()
+	_rebuild()
+	won = false
 	_update_win()
 	_refresh_hud()
 
